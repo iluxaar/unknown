@@ -2,6 +2,8 @@
 
 namespace app\widgets;
 
+use Throwable;
+
 /**
  * Class GridView
  * @package app\widgets
@@ -41,4 +43,19 @@ class GridView extends \kartik\grid\GridView
 	public $pjaxSettings = [
 		'loadingCssClass' => false,
 	];
+	
+	/**
+	 * @return void
+	 * @throws Throwable
+	 */
+	public function run(): void
+	{
+		parent::run();
+		
+		echo ModalAjax::widget([
+			'id' => 'modal-ajax',
+			'selector' => 'a.modal-ajax-link',
+			'pjaxContainer' => "#{$this->id}",
+		]);
+	}
 }

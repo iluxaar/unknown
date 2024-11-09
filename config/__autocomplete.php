@@ -13,7 +13,7 @@ use yii\queue\Queue;
  * }
  * ```
  */
-class Yii {
+class Yii extends \yii\BaseYii {
     /**
      * @var \yii\web\Application|\yii\console\Application|__Application
      */

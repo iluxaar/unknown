@@ -10,7 +10,9 @@ $this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Материалы')
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="material-create">
-
+    <h1>
+        Добавить материал
+    </h1>
     <?= $this->render('_form', [
         'model' => $model,
     ]) ?>

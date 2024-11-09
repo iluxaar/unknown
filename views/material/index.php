@@ -1,6 +1,7 @@
 <?php
 
 use app\models\Material;
+use app\widgets\ModalAjax;
 use yii\helpers\Html;
 use yii\helpers\Url;
 use yii\grid\ActionColumn;
@@ -15,9 +16,10 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="material-index">
     <p class="text-right">
-        <?= Html::a(Yii::t('app', 'Добавить'), ['create'], ['class' => 'btn btn-success']) ?>
+	    <?= Html::a(Yii::t('app', 'Добавить'), ['create'], ['class' => 'btn btn-success modal-ajax-link']) ?>
     </p>
     <?= GridView::widget([
+        'id' => 'modal-ajax-grid',
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
         'columns' => [
@@ -25,7 +27,7 @@ $this->params['breadcrumbs'][] = $this->title;
 		        'attribute' => 'name',
 		        'format'=>'raw',
 		        'value' => static function ($model) {
-			        return Html::a($model->name, ['view', 'id' => $model->id], ['data-pjax' => 0]);
+			        return Html::a($model->name, ['view', 'id' => $model->id], ['class' => 'modal-ajax-link', 'data-pjax' => 0]);
 		        },
 	        ],
             'purchase_price:decimal',
@@ -35,14 +37,15 @@ $this->params['breadcrumbs'][] = $this->title;
 		        'template' => '{update}',
 		        'urlCreator' => static function ($action, Material $model) {
 			        return Url::toRoute([$action, 'id' => $model->id]);
-		        }
+		        },
+                'buttonOptions' => ['class' => 'modal-ajax-link'],
 	        ],
 	        [
 		        'class' => ActionColumn::class,
 		        'template' => '{delete}',
 		        'urlCreator' => static function ($action, Material $model) {
 			        return Url::toRoute([$action, 'id' => $model->id]);
-		        }
+		        },
 	        ],
         ],
     ]) ?>

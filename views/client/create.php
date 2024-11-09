@@ -10,9 +10,10 @@ $this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Клиенты'), 'u
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="client-create">
-
+    <h1>
+        Добавить клиента
+    </h1>
     <?= $this->render('_form', [
         'model' => $model,
     ]) ?>
-
 </div>

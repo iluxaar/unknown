@@ -30,6 +30,7 @@ $config = [
 		    'nullDisplay' => '',
 		    'thousandSeparator' => ' ',
 		    'decimalSeparator' => '.',
+		    'defaultTimeZone' => date_default_timezone_get(),
 		    'dateFormat' => 'php:d.m.Y',
 		    'datetimeFormat' => 'php:d.m.Y H:i',
 		    'timeFormat' => 'php:H:i',
@@ -65,11 +66,11 @@ $config = [
         ],
     ],
 	'on beforeRequest' => function ($event) {
-		/*if (Yii::$app->user->isGuest) {
+		if (Yii::$app->user->isGuest) {
 			if (Yii::$app->request->url != '/login' && Yii::$app->request->url != '/registration') {
 				Yii::$app->response->redirect(['/login']);
 			}
-		}*/
+		}
 	},
 ];
 

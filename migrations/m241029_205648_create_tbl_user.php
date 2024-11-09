@@ -23,6 +23,8 @@ class m241029_205648_create_tbl_user extends Migration
 			'password_hash' => $this->string(32)->notNull()->comment('Хэш пароля'),
 			'created_at' => $this->dateTime()->notNull()->defaultExpression('CURRENT_TIMESTAMP')->comment('Время добавления'),
 		]);
+		
+		$this->createIndex('user_name_index', self::TBL, 'name');
     }
 
     /**

@@ -11,6 +11,9 @@ $this->params['breadcrumbs'][] = ['label' => $model->id, 'url' => ['view', 'id' 
 $this->params['breadcrumbs'][] = Yii::t('app', 'Изменить');
 ?>
 <div class="visit-update">
+    <h1>
+        Изменить запись
+    </h1>
     <?= $this->render('_form', [
         'model' => $model,
     ]) ?>

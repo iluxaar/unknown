@@ -20,6 +20,8 @@ class m241029_133531_create_tbl_service extends Migration
             'price' => $this->integer()->notNull()->comment('Стоимость'),
 	        'created_at' => $this->dateTime()->notNull()->defaultExpression('CURRENT_TIMESTAMP')->comment('Время добавления'),
         ]);
+	    
+	    $this->createIndex('service_name_index', self::TBL, 'name');
     }
 
     /**

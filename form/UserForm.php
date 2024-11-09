@@ -66,7 +66,7 @@ class UserForm extends Model
 	 * @return bool|User
 	 * @throws Exception
 	 */
-	public function create(): bool|User
+	public function save(): bool|User
 	{
 		if (!$this->validate()) {
 			return false;

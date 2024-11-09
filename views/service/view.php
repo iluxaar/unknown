@@ -12,18 +12,9 @@ $this->params['breadcrumbs'][] = $this->title;
 \yii\web\YiiAsset::register($this);
 ?>
 <div class="service-view">
-
-    <p class="text-right">
-        <?= Html::a(Yii::t('app', 'Изменить'), ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
-        <?= Html::a(Yii::t('app', 'Удалить'), ['delete', 'id' => $model->id], [
-            'class' => 'btn btn-danger',
-            'data' => [
-                'confirm' => Yii::t('app', 'Точно удалить?'),
-                'method' => 'post',
-            ],
-        ]) ?>
-    </p>
-
+    <h1>
+        Просмотр услуги
+    </h1>
     <?= DetailView::widget([
         'model' => $model,
         'attributes' => [
@@ -31,5 +22,14 @@ $this->params['breadcrumbs'][] = $this->title;
             'price:decimal',
         ],
     ]) ?>
-
+    <p class="text-right">
+		<?= Html::a(Yii::t('app', 'Изменить'), ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
+		<?= Html::a(Yii::t('app', 'Удалить'), ['delete', 'id' => $model->id], [
+			'class' => 'btn btn-danger',
+			'data' => [
+				'confirm' => Yii::t('app', 'Точно удалить?'),
+				'method' => 'post',
+			],
+		]) ?>
+    </p>
 </div>

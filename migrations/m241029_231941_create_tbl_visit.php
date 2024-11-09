@@ -28,6 +28,9 @@ class m241029_231941_create_tbl_visit extends Migration
 		$this->addForeignKey('visit_user_fk', self::TBL, 'user_id', 'user', 'id');
 	    $this->addForeignKey('visit_client_fk', self::TBL, 'client_id', 'client', 'id');
 	    $this->addForeignKey('visit_service_fk', self::TBL, 'service_id', 'service', 'id');
+	    
+	    $this->createIndex('visit_datetime_index', self::TBL, 'visit_datetime');
+	    $this->createIndex('visit_status_index', self::TBL, 'status');
     }
 
     /**

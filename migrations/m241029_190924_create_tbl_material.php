@@ -21,6 +21,8 @@ class m241029_190924_create_tbl_material extends Migration
 		    'selling_price' => $this->integer()->comment('Цена продажи'),
 		    'created_at' => $this->dateTime()->notNull()->defaultExpression('CURRENT_TIMESTAMP')->comment('Время добавления'),
 	    ]);
+	    
+	    $this->createIndex('material_name_index', self::TBL, 'name');
     }
 
     /**

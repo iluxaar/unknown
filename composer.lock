@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "f5e3602119d8a506019b28e793f9811c",
+    "content-hash": "9df429c1d2017ed1033950d944bbe6b6",
     "packages": [
         {
             "name": "bower-asset/inputmask",
@@ -430,6 +430,46 @@
                 "source": "https://github.com/ezyang/htmlpurifier/tree/v4.18.0"
             },
             "time": "2024-11-01T03:51:45+00:00"
+        },
+        {
+            "name": "ivankff/yii2-modal-ajax",
+            "version": "4.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/ivankff/yii2-modal-ajax.git",
+                "reference": "3860e1654e17cf82a8d3b63b3bb1903e565223e9"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/ivankff/yii2-modal-ajax/zipball/3860e1654e17cf82a8d3b63b3bb1903e565223e9",
+                "reference": "3860e1654e17cf82a8d3b63b3bb1903e565223e9",
+                "shasum": ""
+            },
+            "require": {
+                "yiisoft/yii2": "~2.0.14"
+            },
+            "type": "yii2-extension",
+            "autoload": {
+                "psr-4": {
+                    "ivankff\\yii2ModalAjax\\\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "A wrapper around Yii2 Bootstrap Modal for using an ActiveForm via AJAX inside",
+            "homepage": "https://github.com/ivankff/yii2-modal-ajax",
+            "keywords": [
+                "ajax-modal",
+                "bootstrap",
+                "modal",
+                "yii2"
+            ],
+            "support": {
+                "source": "https://github.com/ivankff/yii2-modal-ajax/tree/4.1.0"
+            },
+            "time": "2020-01-15T10:42:32+00:00"
         },
         {
             "name": "kartik-v/yii2-dialog",
@@ -3386,16 +3426,16 @@
         },
         {
             "name": "myclabs/deep-copy",
-            "version": "1.12.0",
+            "version": "1.12.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/myclabs/DeepCopy.git",
-                "reference": "3a6b9a42cd8f8771bd4295d13e1423fa7f3d942c"
+                "reference": "123267b2c49fbf30d78a7b2d333f6be754b94845"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/myclabs/DeepCopy/zipball/3a6b9a42cd8f8771bd4295d13e1423fa7f3d942c",
-                "reference": "3a6b9a42cd8f8771bd4295d13e1423fa7f3d942c",
+                "url": "https://api.github.com/repos/myclabs/DeepCopy/zipball/123267b2c49fbf30d78a7b2d333f6be754b94845",
+                "reference": "123267b2c49fbf30d78a7b2d333f6be754b94845",
                 "shasum": ""
             },
             "require": {
@@ -3434,7 +3474,7 @@
             ],
             "support": {
                 "issues": "https://github.com/myclabs/DeepCopy/issues",
-                "source": "https://github.com/myclabs/DeepCopy/tree/1.12.0"
+                "source": "https://github.com/myclabs/DeepCopy/tree/1.12.1"
             },
             "funding": [
                 {
@@ -3442,7 +3482,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2024-06-12T14:39:25+00:00"
+            "time": "2024-11-08T17:47:46+00:00"
         },
         {
             "name": "phar-io/manifest",

@@ -11,6 +11,9 @@ $this->params['breadcrumbs'][] = ['label' => 'Карточка клиента', 
 $this->params['breadcrumbs'][] = Yii::t('app', 'Изменить');
 ?>
 <div class="client-update">
+    <h1>
+        Изменить клиента
+    </h1>
     <?= $this->render('_form', [
         'model' => $model,
     ]) ?>

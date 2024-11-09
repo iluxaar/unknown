@@ -16,7 +16,7 @@ class ActiveForm extends \kartik\form\ActiveForm
 	/**
 	 * @var string
 	 */
-	public $type = self::TYPE_HORIZONTAL;
+	public $type = self::TYPE_VERTICAL;
 	
 	/**
 	 * @var string[]

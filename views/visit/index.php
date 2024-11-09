@@ -17,7 +17,7 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="visit-index">
     <p class="text-right">
-        <?= Html::a(Yii::t('app', 'Добавить'), ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a(Yii::t('app', 'Добавить'), ['create'], ['class' => 'btn btn-success modal-ajax-link']) ?>
     </p>
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
@@ -27,13 +27,28 @@ $this->params['breadcrumbs'][] = $this->title;
 		        'attribute' => 'id',
 		        'format'=>'raw',
 		        'value' => static function ($model) {
-			        return Html::a($model->id, ['view', 'id' => $model->id], ['data-pjax' => 0]);
+			        return Html::a(
+                        $model->id,
+                        ['view', 'id' => $model->id],
+                        ['class' => 'modal-ajax-link', 'data-pjax' => 0]
+                    );
 		        },
                 'options' => [
                     'class' => 'grid-column-number',
                 ],
 	        ],
-            'client.name',
+	        [
+		        'attribute' => 'client.name',
+		        'format'=>'raw',
+		        'value' => static function (\app\models\Visit $model) {
+                    if ($model->client) {
+	                    return Html::a(
+                            $model->client->name,
+                            ['/client/view', 'id' => $model->client->id], ['class' => 'modal-ajax-link', 'data-pjax' => 0]
+                        );
+                    }
+		        },
+	        ],
             'service.name',
 	        [
 		        'attribute' => 'user_id',
@@ -72,7 +87,8 @@ $this->params['breadcrumbs'][] = $this->title;
 		        'template' => '{update}',
 		        'urlCreator' => static function ($action, Visit $model) {
 			        return Url::toRoute([$action, 'id' => $model->id]);
-		        }
+		        },
+		        'buttonOptions' => ['class' => 'modal-ajax-link'],
 	        ],
             [
                 'class' => ActionColumn::class,

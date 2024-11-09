@@ -93,12 +93,13 @@ $controllerId = Yii::$app->controller->id;
             <?= $content ?>
         </div>
     </main>
-    
+
     <footer class="footer mt-auto py-3 text-muted">
         <div class="container">
             <p class="float-left">&nbsp;</p>
             <p class="float-right">&nbsp;</p>
         </div>
     </footer>
+
 <?php $this->endContent() ?>
 

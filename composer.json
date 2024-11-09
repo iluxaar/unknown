@@ -25,7 +25,8 @@
         "kartik-v/yii2-widget-select2": "2.2.5",
         "kartik-v/yii2-grid": "3.5.3",
         "kartik-v/yii2-widget-activeform": "1.6.4",
-        "yii2mod/yii2-editable": "1.5"
+        "yii2mod/yii2-editable": "1.5",
+        "ivankff/yii2-modal-ajax": "4.1.0"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.1.0",

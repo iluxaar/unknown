@@ -1,7 +1,3 @@
-html {
-    overflow-y: scroll;
-}
-
 main > .container {
     padding: 70px 15px 100px;
 }
@@ -162,7 +158,7 @@ footer {
 }
 
 .grid-column-number {
-    width: 140px;
+    width: 120px;
 }
 
 .grid-column-datetime {
@@ -183,4 +179,41 @@ footer {
 
 .form-mini h3 {
     margin-bottom: 1.5rem;
+}
+
+#modal-ajax .modal-content .modal-header {
+    padding-bottom: 0;
+    border-bottom: none;
+    position: absolute;
+    float: right;
+    top: 0;
+    right: 0;
+    z-index: 1001;
+}
+
+#modal-ajax .modal-content .modal-body {
+    padding: 1.3rem 1.8rem 0.8rem 1.8rem;
+}
+
+#modal-ajax .modal-content .modal-body h1 {
+    font-size: 1.3rem;
+    margin-bottom: 30px;
+}
+
+@media (min-width: 576px) {
+    .modal-dialog {
+        max-width: 600px;
+        margin: 5rem auto;
+    }
+}
+
+.fade-modal {
+    transform: scale(0.8);
+    opacity: 0;
+    transition: all .2s linear;
+}
+
+.fade-modal.show {
+    opacity: 1;
+    transform: scale(1);
 }

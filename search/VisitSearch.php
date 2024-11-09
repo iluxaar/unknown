@@ -2,6 +2,7 @@
 
 namespace app\search;
 
+use yii\base\InvalidConfigException;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
 use app\models\Visit;
@@ -25,23 +26,20 @@ class VisitSearch extends Visit
     /**
      * {@inheritdoc}
      */
-    public function scenarios()
+    public function scenarios(): array
     {
-        // bypass scenarios() implementation in the parent class
         return Model::scenarios();
     }
-
-    /**
-     * Creates data provider instance with search query applied
-     *
-     * @param array $params
-     *
-     * @return ActiveDataProvider
-     */
-    public function search($params)
+	
+	/**
+	 * @param array $params
+	 * @return ActiveDataProvider
+	 * @throws InvalidConfigException
+	 */
+    public function search(array $params): ActiveDataProvider
     {
         $query = Visit::find()
-            ->joinWith([
+            ->with([
 				'user',
 	            'client',
 	            'service'
@@ -53,7 +51,7 @@ class VisitSearch extends Visit
 				'defaultOrder' => [
 					'id' => SORT_DESC,
 				]
-	        ]
+	        ],
         ]);
 
         $this->load($params);
@@ -62,7 +60,6 @@ class VisitSearch extends Visit
             return $dataProvider;
         }
 
-        // grid filtering conditions
         $query->andFilterWhere([
             'id' => $this->id,
             'user_id' => $this->user_id,
