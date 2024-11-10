@@ -28,7 +28,7 @@ class ActiveField extends \kartik\form\ActiveField
 			'options' => array_merge(['placeholder' => ''], $options),
 			'pluginOptions' => array_merge([
 				'allowClear' => true,
-				'dropdownParent' => '#modal-ajax',
+				'dropdownParent' => '.modal-form',
 			], $pluginOptions),
 		]);
 		

@@ -33,7 +33,7 @@ $this->params['breadcrumbs'][] = $this->title;
         ],
     ]) ?>
     <p class="text-right">
-		<?= Html::a(Yii::t('app', 'Изменить'), ['update', 'id' => $model->id], ['class' => 'btn btn-primary modal-ajax-link']) ?>
+		<?= Html::a(Yii::t('app', 'Изменить'), ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
 		<?= Html::a(Yii::t('app', 'Удалить'), ['delete', 'id' => $model->id], [
 			'class' => 'btn btn-danger',
 			'data' => [

@@ -32,5 +32,6 @@ class ActiveForm extends \kartik\form\ActiveForm
 	 */
 	public $options = [
 		'autocomplete' => 'off',
+		'class' => 'modal-form',
 	];
 }
