@@ -53,7 +53,6 @@ class GridView extends \kartik\grid\GridView
 		parent::run();
 		
 		echo ModalAjax::widget([
-			'id' => 'modal-ajax',
 			'selector' => 'a.modal-ajax-link',
 			'pjaxContainer' => "#{$this->id}",
 		]);

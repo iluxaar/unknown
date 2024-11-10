@@ -16,41 +16,11 @@ use app\widgets\ActiveForm;
 
 <div class="visit-form">
     <?php $form = ActiveForm::begin(); ?>
-    <?= $form->field($model, 'user_id')->widget(Select2::class, [
-	    'data' => User::list(),
-	    'options' => ['placeholder' => ''],
-	    'pluginOptions' => [
-		    'allowClear' => true
-	    ],
-    ]) ?>
-	<?= $form->field($model, 'client_id')->widget(Select2::class, [
-		'data' => Client::list(),
-		'options' => ['placeholder' => ''],
-		'pluginOptions' => [
-			'allowClear' => true
-		],
-	]) ?>
-	<?= $form->field($model, 'service_id')->widget(Select2::class, [
-		'data' => Service::list(),
-		'options' => ['placeholder' => ''],
-		'pluginOptions' => [
-			'allowClear' => true
-		],
-	]) ?>
-    <?= $form->field($model, 'visit_datetime')->widget(DateTimePicker::class, [
-	    'type' => DateTimePicker::TYPE_INPUT,
-	    'pluginOptions' => [
-		    'autoclose' => true,
-		    'format' => 'dd.mm.yyyy hh:ii'
-	    ]
-    ]) ?>
-	<?= $form->field($model, 'status')->widget(Select2::class, [
-		'data' => Visit::statusList(),
-        'hideSearch' => true,
-		'pluginOptions' => [
-			'allowClear' => false
-		],
-	]) ?>
+    <?= $form->field($model, 'user_id')->select2(User::list()) ?>
+	<?= $form->field($model, 'client_id')->select2(Client::list()) ?>
+	<?= $form->field($model, 'service_id')->select2(Service::list()) ?>
+    <?= $form->field($model, 'visit_datetime')->dateTimePicker() ?>
+	<?= $form->field($model, 'status')->select2(Visit::statusList()) ?>
     <?= $form->field($model, 'comment')->textarea(['rows' => 3]) ?>
     <div class="form-group">
         <?= Html::submitButton(Yii::t('app', 'Сохранить'), ['class' => 'btn btn-success']) ?>

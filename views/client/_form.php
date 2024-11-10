@@ -21,14 +21,7 @@ use yii\widgets\MaskedInput;
             'autocomplete' => 'off'
         ],
     ]) ?>
-    <?= $form->field($model, 'birthday')->widget(DatePicker::class, [
-            'type' => DatePicker::TYPE_INPUT,
-            'size' => 'sm',
-            'options' => [
-                'autoclose' => true,
-                'autocomplete' => 'off',
-            ],
-    ]) ?>
+    <?= $form->field($model, 'birthday')->datePicker() ?>
     <?= $form->field($model, 'comment')->textarea(['rows' => 3]) ?>
     <div class="form-group">
         <?= Html::submitButton(Yii::t('app', 'Сохранить'), ['class' => 'btn btn-success']) ?>

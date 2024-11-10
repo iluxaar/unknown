@@ -1,3 +1,7 @@
+body {
+    font-weight: 350 !important;
+}
+
 main > .container {
     padding: 70px 15px 100px;
 }

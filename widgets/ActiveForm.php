@@ -2,9 +2,13 @@
 
 namespace app\widgets;
 
+use yii\base\Model;
+
 /**
  * Class ActiveForm
  * @package app\widgets
+ *
+ * @method ActiveField field(Model $model, string $attribute, array $options = [])
  */
 class ActiveForm extends \kartik\form\ActiveForm
 {
@@ -17,6 +21,11 @@ class ActiveForm extends \kartik\form\ActiveForm
 	 * @var string
 	 */
 	public $type = self::TYPE_VERTICAL;
+	
+	/**
+	 * @var string
+	 */
+	public $fieldClass = ActiveField::class;
 	
 	/**
 	 * @var string[]
