@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "9df429c1d2017ed1033950d944bbe6b6",
+    "content-hash": "16b969dd5b107d2c723ecbc928880ac0",
     "packages": [
         {
             "name": "bower-asset/inputmask",
@@ -72,24 +72,6 @@
                 "type": "zip",
                 "url": "https://api.github.com/repos/wordnik/swagger-ui/zipball/ea0ee85ee24e724bbd95d76a8f34d97778a045fe",
                 "reference": "ea0ee85ee24e724bbd95d76a8f34d97778a045fe"
-            },
-            "type": "bower-asset"
-        },
-        {
-            "name": "bower-asset/x-editable",
-            "version": "1.5.1",
-            "source": {
-                "type": "git",
-                "url": "git@github.com:vitalets/x-editable.git",
-                "reference": "f32802f48a33b8a7ec9cca32eec4ca844b7d39b2"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/vitalets/x-editable/zipball/f32802f48a33b8a7ec9cca32eec4ca844b7d39b2",
-                "reference": "f32802f48a33b8a7ec9cca32eec4ca844b7d39b2"
-            },
-            "require": {
-                "bower-asset/jquery": ">=1.6"
             },
             "type": "bower-asset"
         },
@@ -1924,56 +1906,6 @@
             "time": "2024-09-25T14:11:13+00:00"
         },
         {
-            "name": "yii2mod/yii2-editable",
-            "version": "1.5",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/yii2mod/yii2-editable.git",
-                "reference": "21099a75670b6a406484afadf05ddd415774f4a6"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/yii2mod/yii2-editable/zipball/21099a75670b6a406484afadf05ddd415774f4a6",
-                "reference": "21099a75670b6a406484afadf05ddd415774f4a6",
-                "shasum": ""
-            },
-            "require": {
-                "bower-asset/x-editable": "*",
-                "yiisoft/yii2": "*"
-            },
-            "require-dev": {
-                "friendsofphp/php-cs-fixer": "~2.0"
-            },
-            "type": "yii2-extension",
-            "autoload": {
-                "psr-4": {
-                    "yii2mod\\editable\\": ""
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Igor Chepurnoi",
-                    "email": "igorzfort@gmail.com"
-                }
-            ],
-            "description": "Yii2 editable field extension",
-            "keywords": [
-                "yii2",
-                "yii2 editable",
-                "yii2 editable column",
-                "yii2 editable field"
-            ],
-            "support": {
-                "issues": "https://github.com/yii2mod/yii2-editable/issues",
-                "source": "https://github.com/yii2mod/yii2-editable/tree/master"
-            },
-            "time": "2018-01-15T15:00:16+00:00"
-        },
-        {
             "name": "yiisoft/yii2",
             "version": "2.0.51",
             "source": {
@@ -3247,16 +3179,16 @@
         },
         {
             "name": "fakerphp/faker",
-            "version": "v1.23.1",
+            "version": "v1.24.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/FakerPHP/Faker.git",
-                "reference": "bfb4fe148adbf78eff521199619b93a52ae3554b"
+                "reference": "a136842a532bac9ecd8a1c723852b09915d7db50"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/FakerPHP/Faker/zipball/bfb4fe148adbf78eff521199619b93a52ae3554b",
-                "reference": "bfb4fe148adbf78eff521199619b93a52ae3554b",
+                "url": "https://api.github.com/repos/FakerPHP/Faker/zipball/a136842a532bac9ecd8a1c723852b09915d7db50",
+                "reference": "a136842a532bac9ecd8a1c723852b09915d7db50",
                 "shasum": ""
             },
             "require": {
@@ -3304,9 +3236,9 @@
             ],
             "support": {
                 "issues": "https://github.com/FakerPHP/Faker/issues",
-                "source": "https://github.com/FakerPHP/Faker/tree/v1.23.1"
+                "source": "https://github.com/FakerPHP/Faker/tree/v1.24.0"
             },
-            "time": "2024-01-02T13:46:09+00:00"
+            "time": "2024-11-07T15:11:20+00:00"
         },
         {
             "name": "guzzlehttp/psr7",

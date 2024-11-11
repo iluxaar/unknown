@@ -18,14 +18,13 @@
         "yiisoft/yii2": "~2.0.14",
         "yiisoft/yii2-bootstrap4": "~2.0.0",
         "yiisoft/yii2-swiftmailer": "~2.0.0 || ~2.1.0",
-        "light/yii2-swagger": "~3.0",
-        "yiisoft/yii2-queue": "2.3.7",
         "kartik-v/yii2-widget-datepicker": "1.4.8",
         "kartik-v/yii2-widget-datetimepicker": "1.5.1",
+        "yiisoft/yii2-queue": "2.3.7",
         "kartik-v/yii2-widget-select2": "2.2.5",
+        "light/yii2-swagger": "~3.0",
         "kartik-v/yii2-grid": "3.5.3",
         "kartik-v/yii2-widget-activeform": "1.6.4",
-        "yii2mod/yii2-editable": "1.5",
         "ivankff/yii2-modal-ajax": "4.1.0"
     },
     "require-dev": {
