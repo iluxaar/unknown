@@ -9,16 +9,21 @@ use app\search\FinanceTypeSearch;
  * Class FinanceTypeController
  * @package app\controllers
  */
-class FinanceTypeController extends BaseController
+class FinanceTypeController extends BaseController implements ControllerInterface
 {
 	/**
-	 * @return void
+	 * @return string
 	 */
-	public function init(): void
+	public function getModelName(): string
 	{
-		$this->modelName = FinanceType::class;
-		$this->searchModelName = FinanceTypeSearch::class;
-		
-		parent::init();
+		return FinanceType::class;
+	}
+	
+	/**
+	 * @return string
+	 */
+	public function getSearchModelName(): string
+	{
+		return FinanceTypeSearch::class;
 	}
 }

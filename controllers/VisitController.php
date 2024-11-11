@@ -8,15 +8,13 @@ use app\search\VisitSearch;
 /**
  * VisitController implements the CRUD actions for Visit model.
  */
-class VisitController extends BaseController
+class VisitController extends BaseController implements ControllerInterface
 {
 	/**
 	 * @return void
 	 */
 	public function init(): void
 	{
-		$this->modelName = Visit::class;
-		$this->searchModelName = VisitSearch::class;
 		$this->defaultValues = [
 			'user_id' => \Yii::$app->user->id,
 		];
@@ -24,4 +22,19 @@ class VisitController extends BaseController
 		parent::init();
 	}
 	
+	/**
+	 * @return string
+	 */
+	public function getModelName(): string
+	{
+		return Visit::class;
+	}
+	
+	/**
+	 * @return string
+	 */
+	public function getSearchModelName(): string
+	{
+		return VisitSearch::class;
+	}
 }

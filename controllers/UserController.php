@@ -6,13 +6,12 @@ use app\actions\CreateAction;
 use app\form\UserForm;
 use app\models\User;
 use app\search\UserSearch;
-use yii\filters\VerbFilter;
 
 /**
  * Class UserController
  * @package app\controllers
  */
-class UserController extends BaseController
+class UserController extends BaseController implements ControllerInterface
 {
 	/**
 	 * @return array[]
@@ -27,33 +26,20 @@ class UserController extends BaseController
 		]);
 	}
 	
-    /**
-     * @inheritDoc
-     */
-    public function behaviors(): array
-    {
-        return array_merge(
-            parent::behaviors(),
-            [
-                'verbs' => [
-                    'class' => VerbFilter::class,
-                    'actions' => [
-                        'delete' => ['POST'],
-                    ],
-                ],
-            ]
-        );
-    }
+	/**
+	 * @return string
+	 */
+	public function getModelName(): string
+	{
+		return User::class;
+	}
 	
 	/**
-	 * @return void
+	 * @return string
 	 */
-	public function init(): void
+	public function getSearchModelName(): string
 	{
-		$this->modelName = User::class;
-		$this->searchModelName = UserSearch::class;
-		
-		parent::init();
+		return UserSearch::class;
 	}
-
+	
 }

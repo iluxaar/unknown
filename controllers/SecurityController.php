@@ -37,6 +37,25 @@ class SecurityController extends Controller
 	
 	/**
 	 * @return Response|string
+	 * @throws Exception
+	 */
+	public function actionRegistration(): Response|string
+	{
+		$model = new UserForm();
+		
+		if ($this->request->isPost && $model->load($this->request->post()) && $user = $model->save()) {
+			Yii::$app->user->login($user);
+			
+			return $this->goHome();
+		}
+		
+		return $this->render('registration', [
+			'model' => $model,
+		]);
+	}
+	
+	/**
+	 * @return Response|string
 	 */
 	public function actionLogin(): Response|string
 	{
@@ -64,22 +83,4 @@ class SecurityController extends Controller
 		return $this->goHome();
 	}
 	
-	/**
-	 * @return Response|string
-	 * @throws Exception
-	 */
-	public function actionRegistration(): Response|string
-	{
-		$model = new UserForm();
-		
-		if ($this->request->isPost && $model->load($this->request->post()) && $user = $model->create()) {
-			Yii::$app->user->login($user);
-			
-			return $this->goHome();
-		}
-		
-		return $this->render('registration', [
-			'model' => $model,
-		]);
-	}
 }

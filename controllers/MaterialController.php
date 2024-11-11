@@ -10,35 +10,21 @@ use yii\filters\VerbFilter;
  * Class MaterialController
  * @package app\controllers
  */
-class MaterialController extends BaseController
+class MaterialController extends BaseController implements ControllerInterface
 {
-    /**
-     * @inheritDoc
-     */
-    public function behaviors(): array
-    {
-        return array_merge(
-            parent::behaviors(),
-            [
-                'verbs' => [
-                    'class' => VerbFilter::class,
-                    'actions' => [
-                        'delete' => ['POST'],
-                    ],
-                ],
-            ]
-        );
-    }
-	
 	/**
-	 * @return void
+	 * @return string
 	 */
-	public function init(): void
+	public function getModelName(): string
 	{
-		$this->modelName = Material::class;
-		$this->searchModelName = MaterialSearch::class;
-		
-		parent::init();
+		return Material::class;
 	}
 	
+	/**
+	 * @return string
+	 */
+	public function getSearchModelName(): string
+	{
+		return MaterialSearch::class;
+	}
 }

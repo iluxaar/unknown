@@ -13,19 +13,12 @@ use yii\web\Controller;
 /**
  * Class BaseController
  * @package app\controllers
+ *
+ * @property-read string $modelName
+ * @property-read string $searchModelName
  */
 class BaseController extends Controller
 {
-	/**
-	 * @var string
-	 */
-	public string $modelName;
-	
-	/**
-	 * @var string
-	 */
-	public string $searchModelName;
-	
 	/**
 	 * @var array
 	 */

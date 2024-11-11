@@ -9,17 +9,21 @@ use app\search\ServiceSearch;
  * Class ServiceController
  * @package app\controllers
  */
-class ServiceController extends BaseController
+class ServiceController extends BaseController implements ControllerInterface
 {
 	/**
-	 * @return void
+	 * @return string
 	 */
-	public function init(): void
+	public function getModelName(): string
 	{
-		$this->modelName = Service::class;
-		$this->searchModelName = ServiceSearch::class;
-		
-		parent::init();
+		return Service::class;
 	}
- 
+	
+	/**
+	 * @return string
+	 */
+	public function getSearchModelName(): string
+	{
+		return ServiceSearch::class;
+	}
 }

@@ -6,18 +6,25 @@ use app\models\Client;
 use app\search\ClientSearch;
 
 /**
- * ClientController implements the CRUD actions for Client model.
+ * Class ClientController
+ * @package app\controllers
  */
-class ClientController extends BaseController
+class ClientController extends BaseController implements ControllerInterface
 {
 	/**
-	 * @return void
+	 * @return string
 	 */
-	public function init(): void
+	public function getModelName(): string
 	{
-		$this->modelName = Client::class;
-		$this->searchModelName = ClientSearch::class;
-		
-		parent::init();
+		return Client::class;
 	}
+	
+	/**
+	 * @return string
+	 */
+	public function getSearchModelName(): string
+	{
+		return ClientSearch::class;
+	}
+	
 }

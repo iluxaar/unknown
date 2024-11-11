@@ -10,19 +10,33 @@ use Yii;
  * Class FinanceController
  * @package app\controllers
  */
-class FinanceController extends BaseController
+class FinanceController extends BaseController implements ControllerInterface
 {
 	/**
 	 * @return void
 	 */
 	public function init(): void
 	{
-		$this->modelName = Finance::class;
-		$this->searchModelName = FinanceSearch::class;
 		$this->defaultValues = [
 			'user_id' => Yii::$app->user->id,
 		];
 		
 		parent::init();
+	}
+	
+	/**
+	 * @return string
+	 */
+	public function getModelName(): string
+	{
+		return Finance::class;
+	}
+	
+	/**
+	 * @return string
+	 */
+	public function getSearchModelName(): string
+	{
+		return FinanceSearch::class;
 	}
 }
