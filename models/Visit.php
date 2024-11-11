@@ -155,7 +155,7 @@ class Visit extends \yii\db\ActiveRecord
 	 */
 	public function beforeSave($insert): bool
 	{
-		$this->visit_datetime = \Yii::$app->formatter->asDate($this->visit_datetime, 'php:Y-m-d H:i');
+		$this->visit_datetime = Yii::$app->formatter->asDate($this->visit_datetime, 'php:Y-m-d H:i');
 		
 		return parent::beforeSave($insert);
 	}
@@ -168,6 +168,6 @@ class Visit extends \yii\db\ActiveRecord
 	{
 		parent::afterFind();
 		
-		$this->visit_datetime = \Yii::$app->formatter->asDate($this->visit_datetime, 'php:d.m.Y H:i');
+		$this->visit_datetime = Yii::$app->formatter->asDate($this->visit_datetime, 'php:d.m.Y H:i');
 	}
 }

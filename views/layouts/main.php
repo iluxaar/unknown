@@ -43,9 +43,9 @@ $controllerId = Yii::$app->controller->id;
                     'active' => $controllerId === 'client',
                 ],
                 [
-                    'label' => Yii::t('app', 'Склад'),
-                    'url' => ['/store/index'],
-                    'active' => $controllerId === 'store',
+                    'label' => Yii::t('app', 'Финансы'),
+                    'url' => ['/finance/index'],
+                    'active' => $controllerId === 'finance',
                 ],
                 [
                     'label' => Yii::t('app', 'Справочники'),
@@ -65,6 +65,11 @@ $controllerId = Yii::$app->controller->id;
                             'url' => ['/material/index'],
                             'active' => $controllerId === 'material',
                         ],
+	                    [
+		                    'label' => Yii::t('app', 'Статьи финансов'),
+		                    'url' => ['/finance-type/index'],
+		                    'active' => $controllerId === 'finance-type',
+	                    ],
                     ],
                     'active' => $controllerId === 'user' ||
                         $controllerId === 'service' ||

@@ -34,7 +34,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     );
 		        },
                 'options' => [
-                    'class' => 'grid-column-number',
+                    'class' => 'grid-column-id',
                 ],
 	        ],
 	        [
@@ -58,6 +58,7 @@ $this->params['breadcrumbs'][] = $this->title;
 	        ],
 	        [
 		        'attribute' => 'visit_datetime',
+		        'format' => 'datetime',
                 'filterType' => GridView::FILTER_DATE,
 		        'filterWidgetOptions' => [
 			        'type' => DatePicker::TYPE_INPUT,

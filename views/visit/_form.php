@@ -4,8 +4,6 @@ use app\models\Client;
 use app\models\Service;
 use app\models\User;
 use app\models\Visit;
-use kartik\datetime\DateTimePicker;
-use kartik\select2\Select2;
 use yii\helpers\Html;
 use app\widgets\ActiveForm;
 

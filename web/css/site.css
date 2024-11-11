@@ -161,8 +161,12 @@ footer {
     width: 38px;
 }
 
-.grid-column-number {
-    width: 120px;
+.grid-column-id {
+    width: 100px;
+}
+
+.grid-column-sum {
+    width: 140px;
 }
 
 .grid-column-datetime {
