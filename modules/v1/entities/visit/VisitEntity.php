@@ -1,16 +1,16 @@
 <?php
 
-namespace app\modules\v1\entities\user;
+namespace app\modules\v1\entities\visit;
 
 use OpenApi\Attributes as OA;
 use yii\base\Arrayable;
 use yii\base\ArrayableTrait;
 
 #[OA\Schema(
-	schema: 'UserItemSchema',
-	description: 'Пользователь'
+	schema: 'VisitItemSchema',
+	description: 'Запись'
 )]
-class UserEntity implements Arrayable
+class VisitEntity implements Arrayable
 {
 	use ArrayableTrait;
 	
@@ -18,8 +18,8 @@ class UserEntity implements Arrayable
 		#[OA\Property(title: 'ID', type: 'integer')]
 		private readonly int $id,
 		
-		#[OA\Property(title: 'name', type: 'string')]
-		private readonly string $name,
+		#[OA\Property(title: 'clientId', type: 'integer')]
+		private readonly int $clientId,
 	) {
 	}
 	
@@ -34,9 +34,9 @@ class UserEntity implements Arrayable
 	/**
 	 * @return string
 	 */
-	public function getName(): string
+	public function getClientId(): string
 	{
-		return $this->name;
+		return $this->clientId;
 	}
 	
 }

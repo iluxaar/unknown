@@ -2,22 +2,26 @@
 
 namespace app\modules\v1\controllers;
 
-use app\modules\v1\entities\user\UserEntity;
-use app\search\UserSearch;
+use app\modules\v1\entities\visit\VisitEntity;
+use app\search\VisitSearch;
+use yii\base\InvalidConfigException;
 use yii\rest\Controller;
 use OpenApi\Attributes as OA;
 use app\modules\core\attributes\ForbiddenResponse;
 use app\modules\core\attributes\InvalidValidationResponse;
 use app\modules\core\attributes\MethodNotAllowedResponse;
 
-class UserController extends Controller
+class VisitController extends Controller
 {
+	/**
+	 * @throws InvalidConfigException
+	 */
 	#[OA\Get(
-		path: '/user/list',
-		operationId: 'getUsers',
-		description: 'Возвращает список пользователей',
-		summary: 'Список пользователей',
-		tags: ['user'],
+		path: '/visit/list',
+		operationId: 'getVisits',
+		description: 'Возвращает список записей клиентов',
+		summary: 'Список записей',
+		tags: ['visit'],
 		parameters: [
 			new OA\Parameter(
 				name: 'id',
@@ -33,7 +37,7 @@ class UserController extends Controller
 		description: 'Успешный ответ',
 		content: new OA\JsonContent(
 			type: 'array',
-			items: new OA\Items(type: UserEntity::class)
+			items: new OA\Items(type: VisitEntity::class)
 		)
 	)]
 	#[ForbiddenResponse]
@@ -41,6 +45,6 @@ class UserController extends Controller
 	#[InvalidValidationResponse]
 	public function actionList(): \yii\data\ActiveDataProvider
 	{
-		return (new UserSearch())->search($this->request->queryParams);
+		return (new VisitSearch())->search($this->request->queryParams);
 	}
 }
