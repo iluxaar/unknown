@@ -43,12 +43,15 @@ $config = [
             'useFileTransport' => true,
         ],
 	    'assetManager' => [
+		    'appendTimestamp' => true,
 		    'converter' => [
 			    'class' => 'yii\web\AssetConverter',
+			    //'forceConvert' => YII_ENV_DEV,
 			    'commands' => [
-				    'scss' => ['css', 'C:\Ruby22\bin\sass {from} {to}']
+				    'scss' => ['css', 'sass /var/www/unknown/assets/main/css/site.scss /var/www/unknown/web/css/site.css --style=compressed --sourcemap'],
 			    ],
 		    ],
+		    
 	    ],
         'urlManager' => [
             'enablePrettyUrl' => true,

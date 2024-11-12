@@ -1,19 +1,12 @@
 <?php
-/**
- * @link http://www.yiiframework.com/
- * @copyright Copyright (c) 2008 Yii Software LLC
- * @license http://www.yiiframework.com/license/
- */
 
-namespace app\assets;
+namespace app\assets\main;
 
 use yii\web\AssetBundle;
 
 /**
- * Main application asset bundle.
- *
- * @author Qiang Xue <qiang.xue@gmail.com>
- * @since 2.0
+ * Class AppAsset
+ * @package app\assets\app
  */
 class AppAsset extends AssetBundle
 {

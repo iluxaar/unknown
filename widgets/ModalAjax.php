@@ -15,7 +15,7 @@ class ModalAjax extends \ivankff\yii2ModalAjax\ModalAjax
 	{
 		$this->bootstrapVersion = self::BOOTSTRAP_VERSION_4;
 		$this->ajaxSubmit = true;
-		$this->options = ['class' => 'header-default fade-modal'];
+		$this->options = ['class' => 'header-default fade-modal modal-ajax'];
 		$this->autoClose = true;
 		$this->id = 'modal-ajax';
 		
