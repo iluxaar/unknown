@@ -3,6 +3,7 @@
 namespace app\models;
 
 use app\query\UserQuery;
+use app\validators\MobileNumberValidator;
 use Yii;
 use yii\db\ActiveQuery;
 use yii\helpers\ArrayHelper;
@@ -38,6 +39,7 @@ class Client extends \yii\db\ActiveRecord
             [['mobile_phone'], 'string', 'max' => 18],
             [['birthday'], 'string', 'max' => 10],
             [['mobile_phone'], 'unique'],
+	        ['mobile_phone', MobileNumberValidator::class],
         ];
     }
 

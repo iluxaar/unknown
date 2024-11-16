@@ -4,6 +4,7 @@ namespace app\form;
 
 use app\jobs\MailSendJob;
 use app\models\User;
+use app\validators\MobileNumberValidator;
 use Yii;
 use yii\base\Model;
 use yii\db\Exception;
@@ -47,6 +48,7 @@ class UserForm extends Model
 				'targetClass' => User::class,
 				'message' => Yii::t('app', 'Номер уже используется'),
 			],
+			['mobile_phone', MobileNumberValidator::class],
 		];
 	}
 	

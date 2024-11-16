@@ -3,6 +3,7 @@
 namespace app\models;
 
 use app\query\UserQuery;
+use app\validators\MobileNumberValidator;
 use Exception;
 use Yii;
 use yii\db\ActiveRecord;
@@ -40,6 +41,7 @@ class User extends ActiveRecord implements IdentityInterface
             [['mobile_phone'], 'string', 'max' => 18],
 	        [['password_hash'], 'string', 'max' => 32],
             [['email', 'mobile_phone'], 'unique'],
+	        ['mobile_phone', MobileNumberValidator::class],
         ];
     }
 	
