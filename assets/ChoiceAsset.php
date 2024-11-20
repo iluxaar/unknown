@@ -1,6 +1,6 @@
 <?php
 
-namespace app\assets\choice;
+namespace app\assets;
 
 use yii\web\AssetBundle;
 

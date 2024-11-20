@@ -28,7 +28,7 @@ use yii\db\ActiveQuery;
 class Visit extends \yii\db\ActiveRecord
 {
 	/**
-	 * Запись открыта
+	 * Запись новая
 	 */
 	public const STATUS_OPEN = 0;
 	
@@ -56,8 +56,9 @@ class Visit extends \yii\db\ActiveRecord
     public function rules(): array
     {
         return [
-            [['user_id', 'client_id', 'service_id', 'visit_datetime'], 'required'],
+            [['user_id', 'client_id', 'service_id', 'visit_datetime', 'status'], 'required'],
             [['user_id', 'client_id', 'service_id', 'status'], 'integer'],
+	        ['status', 'default', 'value' => self::STATUS_OPEN],
             [['visit_datetime'], 'safe'],
             [['comment'], 'string'],
             [['client_id'], 'exist', 'skipOnError' => true, 'targetClass' => Client::class, 'targetAttribute' => ['client_id' => 'id']],
@@ -93,7 +94,7 @@ class Visit extends \yii\db\ActiveRecord
 	public static function statusList(): array
 	{
 		return [
-			self::STATUS_OPEN => 'Открыта',
+			self::STATUS_OPEN => 'Новая',
 			self::STATUS_COMPLETE => 'Выполнена',
 			self::STATUS_CANCEL => 'Отменена',
 		];
@@ -137,6 +138,20 @@ class Visit extends \yii\db\ActiveRecord
 		$list = self::statusList();
 		
 		return $list[$this->status] ?? null;
+	}
+	
+	/**
+	 * @return string|null
+	 */
+	public function getStatusColor(): ?string
+	{
+		$colors = [
+			self::STATUS_OPEN => '#007bff',
+			self::STATUS_COMPLETE => '#28a745',
+			self::STATUS_CANCEL => '#dc3545',
+		];
+		
+		return $colors[$this->status] ?? null;
 	}
 
     /**

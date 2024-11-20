@@ -18,7 +18,8 @@ use app\widgets\ActiveForm;
 	<?= $form->field($model, 'client_id')->select2(Client::list()) ?>
 	<?= $form->field($model, 'service_id')->select2(Service::list()) ?>
     <?= $form->field($model, 'visit_datetime')->dateTimePicker() ?>
-	<?= $form->field($model, 'status')->select2(Visit::statusList()) ?>
+	<?= $form->field($model, 'status')->select2(Visit::statusList(), ['placeholder' => false], ['allowClear' =>
+        false, 'minimumResultsForSearch' => -1]) ?>
     <?= $form->field($model, 'comment')->textarea(['rows' => 3]) ?>
     <div class="form-group">
         <?= Html::submitButton(Yii::t('app', 'Сохранить'), ['class' => 'btn btn-success']) ?>

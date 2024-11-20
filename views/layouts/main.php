@@ -18,11 +18,14 @@ $controllerId = Yii::$app->controller->id;
         NavBar::begin([
             'brandLabel' => Yii::$app->name,
             'brandUrl' => Yii::$app->homeUrl,
+            'innerContainerOptions' => [
+                'class' => 'container-fluid'
+            ],
             'collapseOptions' => [
                 'class' => 'justify-content-end'
             ],
             'options' => [
-                'class' => 'navbar navbar-expand-md navbar-dark bg-dark fixed-top navbar-right',
+                'class' => 'navbar navbar-expand-lg navbar-dark bg-dark fixed-top navbar-right',
             ],
         ]);
         echo Nav::widget([
@@ -32,6 +35,10 @@ $controllerId = Yii::$app->controller->id;
                 'encodeLabels' => false,
             ],
             'items' => [
+	            [
+		            'label' => Yii::t('app', 'Календарь'),
+		            'url' => ['/site/index'],
+	            ],
                 [
                     'label' => Yii::t('app', 'Записи'),
                     'url' => ['/visit/index'],
@@ -90,7 +97,7 @@ $controllerId = Yii::$app->controller->id;
     </header>
     
     <main role="main" class="flex-shrink-0">
-        <div class="container">
+        <div class="main-container container-fluid">
             <?= Breadcrumbs::widget([
                 'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
             ]) ?>
@@ -100,7 +107,7 @@ $controllerId = Yii::$app->controller->id;
     </main>
 
     <footer class="footer mt-auto py-3 text-muted">
-        <div class="container">
+        <div class="container-fluid">
             <p class="float-left">&nbsp;</p>
             <p class="float-right">&nbsp;</p>
         </div>

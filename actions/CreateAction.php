@@ -39,7 +39,10 @@ class CreateAction extends Action
 	{
 		/** @var ActiveRecord $model */
 		$model = Yii::createObject($this->modelName);
-		$model->setAttributes($this->defaultValues);
+		
+		if (!empty($this->defaultValues)) {
+			$model->setAttributes($this->defaultValues);
+		}
 		
 		if ($this->controller->request->isPost) {
 			if ($model->load($this->controller->request->post()) && $model->save()) {

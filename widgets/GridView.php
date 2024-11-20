@@ -13,7 +13,9 @@ class GridView extends \kartik\grid\GridView
 	/**
 	 * @var string[]
 	 */
-	public $tableOptions = ['class' => 'table table-hover'];
+	public $tableOptions = [
+		'class' => 'table table-striped table-hover',
+	];
 	
 	/**
 	 * @var string[]
@@ -25,7 +27,7 @@ class GridView extends \kartik\grid\GridView
 	/**
 	 * @var string
 	 */
-	public $layout = "{items}\n<div class='container grid-footer'>{summary}\n{pager}</div>";
+	public $layout = "{items}\n<div class='container-fluid grid-footer'>{summary}\n{pager}</div>";
 	
 	/**
 	 * @var bool

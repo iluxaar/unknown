@@ -1,5 +1,7 @@
 <?php
 
+use yii\swiftmailer\Mailer;
+use skeeks\yii2\assetsAuto\AssetsAutoCompressComponent;
 use yii\helpers\ArrayHelper;
 
 $commonConfig = require __DIR__ . '/common.php';
@@ -8,6 +10,9 @@ $config = [
     'id' => 'basic',
     'name' => 'ELStudio',
     'language' => 'ru-RU',
+	'bootstrap' => [
+		'assetsAutoCompress',
+	],
 	'modules' => [
 		'gridview' =>  [
 			'class' => '\kartik\grid\Module',
@@ -39,11 +44,14 @@ $config = [
             'errorAction' => 'site/error',
         ],
         'mailer' => [
-            'class' => 'yii\swiftmailer\Mailer',
+            'class' => Mailer::class,
             'useFileTransport' => true,
         ],
 	    'assetManager' => [
 		    'appendTimestamp' => true,
+	    ],
+	    'assetsAutoCompress' => [
+		    'class' => AssetsAutoCompressComponent::class,
 	    ],
         'urlManager' => [
             'enablePrettyUrl' => true,
@@ -70,7 +78,6 @@ $config = [
 ];
 
 if (YII_ENV_DEV) {
-    // configuration adjustments for 'dev' environment
     $config['bootstrap'][] = 'debug';
     $config['modules']['debug'] = [
         'class' => 'yii\debug\Module',

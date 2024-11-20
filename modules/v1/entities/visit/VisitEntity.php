@@ -15,11 +15,17 @@ class VisitEntity implements Arrayable
 	use ArrayableTrait;
 	
 	public function __construct(
-		#[OA\Property(title: 'ID', type: 'integer')]
+		#[OA\Property(title: 'id', type: 'integer')]
 		private readonly int $id,
 		
-		#[OA\Property(title: 'clientId', type: 'integer')]
-		private readonly int $clientId,
+		#[OA\Property(title: 'title', type: 'string')]
+		private readonly string $title,
+		
+		#[OA\Property(title: 'start', type: 'string')]
+		private readonly string $start,
+		
+		#[OA\Property(title: 'color', type: 'color')]
+		private readonly string $color,
 	) {
 	}
 	
@@ -34,9 +40,19 @@ class VisitEntity implements Arrayable
 	/**
 	 * @return string
 	 */
-	public function getClientId(): string
+	public function getTitle(): string
 	{
-		return $this->clientId;
+		return $this->title;
+	}
+	
+	public function getStart(): string
+	{
+		return $this->start;
+	}
+	
+	public function getColor(): string
+	{
+		return $this->color;
 	}
 	
 }

@@ -3,7 +3,7 @@
 namespace app\modules\v1\controllers;
 
 use app\modules\v1\entities\visit\VisitEntity;
-use app\search\VisitSearch;
+use app\modules\v1\services\VisitFindService;
 use yii\base\InvalidConfigException;
 use yii\rest\Controller;
 use OpenApi\Attributes as OA;
@@ -13,6 +13,15 @@ use app\modules\core\attributes\MethodNotAllowedResponse;
 
 class VisitController extends Controller
 {
+	public function __construct(
+		$id,
+		$module,
+		private readonly VisitFindService $visitFindService,
+		$config = []
+	) {
+		parent::__construct($id, $module, $config);
+	}
+	
 	/**
 	 * @throws InvalidConfigException
 	 */
@@ -43,8 +52,8 @@ class VisitController extends Controller
 	#[ForbiddenResponse]
 	#[MethodNotAllowedResponse]
 	#[InvalidValidationResponse]
-	public function actionList(): \yii\data\ActiveDataProvider
+	public function actionList($start, $end): array
 	{
-		return (new VisitSearch())->search($this->request->queryParams);
+		return $this->visitFindService->getByUserId(\Yii::$app->user->id, $start, $end);
 	}
 }

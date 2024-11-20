@@ -22,10 +22,11 @@
         "kartik-v/yii2-widget-datetimepicker": "1.5.1",
         "yiisoft/yii2-queue": "2.3.7",
         "kartik-v/yii2-widget-select2": "2.2.5",
-        "light/yii2-swagger": "~3.0",
+        "light/yii2-swagger": "3.0.4",
         "kartik-v/yii2-grid": "3.5.3",
         "kartik-v/yii2-widget-activeform": "1.6.4",
-        "ivankff/yii2-modal-ajax": "4.1.0"
+        "ivankff/yii2-modal-ajax": "4.1.0",
+        "skeeks/yii2-assets-auto-compress": "1.4.5.2"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.1.0",
@@ -45,7 +46,10 @@
             "enabled": false
         },
         "allow-plugins": {
-            "yiisoft/yii2-composer": true
+            "yiisoft/yii2-composer": true,
+            "composer/installers": true,
+            "robloach/component-installer": true,
+            "oomphinc/composer-installers-extender": true
         }
     },
     "scripts": {
@@ -58,6 +62,9 @@
         ]
     },
     "extra": {
+        "npm": {
+
+        },
         "yii\\composer\\Installer::postCreateProject": {
             "setPermission": [
                 {

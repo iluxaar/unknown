@@ -1,0 +1,229 @@
+body {
+    font-weight: 350 !important;
+    overflow-y: scroll;
+}
+
+main > .main-container {
+    padding: 70px 15px 100px
+}
+
+.footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    z-index: 1;
+    background-color: #f5f5f5;
+    font-size: .9em;
+    height: 60px
+}
+
+.footer > .container {
+    padding-right: 15px;
+    padding-left: 15px
+}
+
+.not-set {
+    color: #c55;
+    font-style: italic
+}
+
+.breadcrumb .active {
+    font-weight: bold
+}
+
+.breadcrumb .active:before {
+    font-weight: normal
+}
+
+.error-summary {
+    color: #dc3545;
+    background: #f5f5f5;
+    border-left: 3px solid #dc3545;
+    padding: 10px 20px;
+    margin: 0 0 15px 0
+}
+
+.has-error .help-block {
+    color: #dc3545
+}
+
+.has-error .form-control {
+    border-color: #dc3545
+}
+
+.nav li > form > button.logout {
+    padding-top: 7px
+}
+
+.dropdown-toggle::after {
+    vertical-align: 0.1em
+}
+
+.grid-view th {
+    white-space: nowrap
+}
+
+.grid-view th a {
+    color: #212529
+}
+
+.grid-view th a.asc, .grid-view th a.desc {
+    color: #212529
+}
+
+.grid-view th a.asc:after, .grid-view th a.desc:after {
+    content: '';
+    left: 3px;
+    display: inline-block;
+    width: 0;
+    height: 0;
+    border: solid 5px transparent;
+    margin: 4px 4px 2px 4px;
+    background: transparent
+}
+
+.grid-view th a.asc:after {
+    border-bottom: solid 7px #212529;
+    border-top-width: 0
+}
+
+.grid-view th a.desc:after {
+    border-top: solid 7px #212529;
+    border-bottom-width: 0
+}
+
+.grid-view .grid-footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    z-index: 2;
+    padding-left: 0;
+    padding-right: 30px;
+    height: 60px
+}
+
+.grid-view .grid-footer nav {
+    float: right;
+    margin-top: 10px
+}
+
+.grid-view .grid-footer .summary {
+    float: left;
+    margin-top: 17px
+}
+
+.grid-view .grid-footer nav .pagination {
+    margin-bottom: 0
+}
+
+.grid-view .action-column {
+    width: 38px
+}
+
+.grid-view .grid-column-id {
+    width: 100px
+}
+
+.grid-view .grid-column-sum {
+    width: 140px
+}
+
+.grid-view .grid-column-datetime {
+    width: 160px
+}
+
+.grid-view .grid-column-visit-status {
+    width: 160px
+}
+
+.table-hover tbody tr:hover {
+    color: #212529;
+    background-color: rgb(253, 249, 229);
+}
+
+.badge {
+    color: #fff
+}
+
+.badge.visit-status-0 {
+    background-color: #007bff
+}
+
+.badge.visit-status-5 {
+    background-color: #28a745
+}
+
+.badge.visit-status-9 {
+    background-color: #dc3545
+}
+
+.form-mini {
+    position: absolute;
+    left: calc(50% - 160px);
+    top: calc(20%);
+    margin-right: -50%;
+    width: 320px
+}
+
+.form-mini h3 {
+    margin-bottom: 1.5rem
+}
+
+.modal-ajax .modal-header {
+    padding-bottom: 0;
+    border-bottom: none;
+    position: absolute;
+    float: right;
+    top: 0;
+    right: 0;
+    z-index: 1001
+}
+
+.modal-ajax .modal-content .modal-body {
+    padding: 1.3rem 1.8rem 0.8rem 1.8rem
+}
+
+.modal-ajax .modal-content .modal-body h1 {
+    font-size: 1.3rem;
+    margin-bottom: 30px
+}
+
+.fade-modal {
+    transform: scale(0.8);
+    opacity: 0;
+    transition: all .2s linear
+}
+
+.fade-modal.show {
+    opacity: 1;
+    transform: scale(1)
+}
+
+@media (max-width: 767px) {
+    .nav li > form > button.logout {
+        display: block;
+        text-align: left;
+        width: 100%;
+        padding: 10px 0
+    }
+}
+
+@media (min-width: 576px) {
+    .modal-dialog {
+        max-width: 600px;
+        margin: 5rem auto
+    }
+}
+
+#calendar-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: 80px 20px;
+}
+
+#calendar-container a {
+    color: #1E1E1E;
+}
