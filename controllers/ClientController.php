@@ -8,6 +8,8 @@ use app\search\ClientSearch;
 /**
  * Class ClientController
  * @package app\controllers
+ *
+ * Управление клиентами
  */
 class ClientController extends BaseController implements ControllerInterface
 {

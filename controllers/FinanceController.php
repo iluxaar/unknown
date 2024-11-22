@@ -9,6 +9,8 @@ use Yii;
 /**
  * Class FinanceController
  * @package app\controllers
+ *
+ * Управление финансами
  */
 class FinanceController extends BaseController implements ControllerInterface
 {

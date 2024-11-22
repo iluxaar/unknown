@@ -7,6 +7,8 @@ use app\search\VisitSearch;
 
 /**
  * VisitController implements the CRUD actions for Visit model.
+ *
+ * Записи клиентов
  */
 class VisitController extends BaseController implements ControllerInterface
 {

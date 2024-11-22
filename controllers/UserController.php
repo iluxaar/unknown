@@ -10,6 +10,8 @@ use app\search\UserSearch;
 /**
  * Class UserController
  * @package app\controllers
+ *
+ * Сотрудники салона
  */
 class UserController extends BaseController implements ControllerInterface
 {

@@ -9,6 +9,8 @@ use yii\filters\VerbFilter;
 /**
  * Class MaterialController
  * @package app\controllers
+ *
+ * Номенклатура материалов
  */
 class MaterialController extends BaseController implements ControllerInterface
 {

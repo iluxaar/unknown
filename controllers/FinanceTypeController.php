@@ -8,6 +8,8 @@ use app\search\FinanceTypeSearch;
 /**
  * Class FinanceTypeController
  * @package app\controllers
+ *
+ * Типы финансовых статей
  */
 class FinanceTypeController extends BaseController implements ControllerInterface
 {
