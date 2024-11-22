@@ -17,7 +17,7 @@ use yii\web\Controller;
  * @property-read string $modelName
  * @property-read string $searchModelName
  */
-class BaseController extends Controller
+abstract class BaseController extends Controller
 {
 	/**
 	 * @var array
@@ -33,7 +33,7 @@ class BaseController extends Controller
 			parent::behaviors(),
 			[
 				'verbs' => [
-					'class' => VerbFilter::className(),
+					'class' => VerbFilter::class,
 					'actions' => [
 						'delete' => ['POST'],
 					],

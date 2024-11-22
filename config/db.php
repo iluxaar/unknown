@@ -2,9 +2,9 @@
 
 return [
     'class' => 'yii\db\Connection',
-    'dsn' => 'mysql:host=db;dbname=unknown',
+    'dsn' => 'mysql:host=MySQL-8.2;dbname=unknown',
     'username' => 'root',
-    'password' => '123',
+    'password' => 'superuser',
     'charset' => 'utf8',
     'enableSchemaCache' => true,
     //'schemaCacheDuration' => 60,

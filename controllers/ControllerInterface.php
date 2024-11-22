@@ -3,10 +3,11 @@
 namespace app\controllers;
 
 /**
+ *
  * Interface ControllerInterface
  * @package app\controllers
  *
- *
+ * Интерфейс для базовых CRUD
  */
 interface ControllerInterface
 {
