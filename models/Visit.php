@@ -85,6 +85,8 @@ class Visit extends \yii\db\ActiveRecord
 	        'statusName' => Yii::t('app', 'Статус'),
 	        'created_at' => Yii::t('app', 'Добавлено'),
             'comment' => Yii::t('app', 'Примечание'),
+	        'clientName' => Yii::t('app', 'Клиент'),
+	        'clientMobilePhone' => Yii::t('app', 'Моб. номер'),
         ];
     }
 	

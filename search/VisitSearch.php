@@ -12,14 +12,24 @@ use app\models\Visit;
  */
 class VisitSearch extends Visit
 {
+	/**
+	 * @var string|null
+	 */
+	public ?string $clientName = null;
+	
+	/**
+	 * @var string|null
+	 */
+	public ?string $clientMobilePhone = null;
+	
     /**
      * {@inheritdoc}
      */
     public function rules(): array
     {
         return [
-            [['id', 'user_id', 'client_id', 'service_id', 'status'], 'integer'],
-            [['visit_datetime', 'comment', 'statusName'], 'safe'],
+            [['id', 'user_id', 'client_id', 'status'], 'integer'],
+	        [['clientName', 'clientMobilePhone', 'visit_datetime'], 'string'],
         ];
     }
 
@@ -38,18 +48,17 @@ class VisitSearch extends Visit
 	 */
     public function search(array $params): ActiveDataProvider
     {
-        $query = Visit::find()
-            ->with([
-				'user',
-	            'client',
-	            'service'
-            ]);
+        $query = Visit::find()->with([
+			'user',
+			'client',
+            'service'
+        ]);
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
 	        'sort' => [
 				'defaultOrder' => [
-					'id' => SORT_DESC,
+					'visit_datetime' => SORT_DESC,
 				]
 	        ],
         ]);
@@ -73,8 +82,13 @@ class VisitSearch extends Visit
 				'LIKE', 'visit_datetime', \Yii::$app->formatter->asDate($this->visit_datetime, 'php:Y-m-d') . '%', false
 			]);
 		}
-
-        $query->andFilterWhere(['like', 'comment', $this->comment]);
+		
+		// Оптимизация. Джойним только в случае поиска по атрибуту
+		if ($this->clientName || $this->clientMobilePhone) {
+			$query->joinWith('client')
+				->andFilterWhere(['like', 'client.name', $this->clientName])
+				->andFilterWhere(['like', 'client.mobile_phone', $this->clientMobilePhone]);
+		}
 
         return $dataProvider;
     }

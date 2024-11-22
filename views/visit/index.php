@@ -38,7 +38,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 ],
 	        ],
 	        [
-		        'attribute' => 'client.name',
+		        'attribute' => 'clientName',
 		        'format'=>'raw',
 		        'value' => static function (\app\models\Visit $model) {
                     if ($model->client) {
@@ -49,6 +49,10 @@ $this->params['breadcrumbs'][] = $this->title;
                     }
 		        },
 	        ],
+	        [
+                'attribute' => 'clientMobilePhone',
+                'value' => 'client.mobile_phone',
+            ],
             'service.name',
 	        [
 		        'attribute' => 'user_id',

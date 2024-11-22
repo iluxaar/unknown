@@ -11,7 +11,7 @@ $config = [
     'name' => 'ELStudio',
     'language' => 'ru-RU',
 	'bootstrap' => [
-		'assetsAutoCompress',
+		//'assetsAutoCompress',
 	],
 	'modules' => [
 		'gridview' =>  [
