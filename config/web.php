@@ -58,6 +58,7 @@ $config = [
             'enableStrictParsing' => false,
             'showScriptName' => false,
             'rules' => [
+				'/' => 'site/index',
 				'login' => 'security/login',
 	            'logout' => 'security/logout',
 	            'registration' => 'security/registration',
