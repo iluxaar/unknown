@@ -13,6 +13,7 @@ class FullCalendarAsset extends AssetBundle
 	public $sourcePath = '@app/assets/fullcalendar';
     public $js = [
         'dist/index.global.min.js',
+	    'js/calendar.js',
     ];
     public $depends = [
         'yii\web\YiiAsset',
