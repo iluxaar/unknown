@@ -1,0 +1,14 @@
+footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  z-index: 1;
+  background-color: $footerBgColor;
+  font-size: .9em;
+  height: 60px;
+
+  > .container {
+    padding-right: 15px;
+    padding-left: 15px;
+  }
+}

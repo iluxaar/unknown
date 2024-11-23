@@ -3,6 +3,8 @@
 namespace app\assets;
 
 use yii\web\AssetBundle;
+use yii\web\YiiAsset;
+use yii\bootstrap4\BootstrapAsset;
 
 /**
  * Class AppAsset
@@ -10,14 +12,24 @@ use yii\web\AssetBundle;
  */
 class AppAsset extends AssetBundle
 {
-	public $sourcePath = '@app/assets/app';
+	public $sourcePath = '@app/assets/app/themes/main';
     public $css = [
         'css/site.scss',
     ];
-    public $js = [
-    ];
     public $depends = [
-        'yii\web\YiiAsset',
-        'yii\bootstrap4\BootstrapAsset',
+	    YiiAsset::class,
+	    BootstrapAsset::class,
     ];
+	
+	/**
+	 * @return void
+	 */
+	public function init(): void
+	{
+		if (YII_ENV_DEV) {
+			$this->publishOptions['forceCopy'] = true;
+		}
+		
+		parent::init();
+	}
 }

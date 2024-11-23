@@ -12,7 +12,7 @@ use app\widgets\ModalAjax;
 $this->title = 'ELStudio';
 FullCalendarAsset::register($this);
 ?>
-<div id='calendar-container'>
+<div class='calendar-container'>
     <div id='calendar'></div>
 </div>
 <?= ModalAjax::widget([

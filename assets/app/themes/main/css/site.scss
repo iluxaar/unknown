@@ -1,0 +1,10 @@
+@import "./_variables.scss";
+
+body {
+    font-weight: $bodyFontWeight !important;
+    overflow-y: scroll;
+
+    @import "./_header.scss";
+    @import "./_main.scss";
+    @import "./_footer.scss";
+}
