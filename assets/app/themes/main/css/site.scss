@@ -4,6 +4,21 @@ body {
     font-weight: $bodyFontWeight !important;
     overflow-y: scroll;
 
+    .container-fluid {
+        max-width: 1920px;
+    }
+
+    .form-security {
+        position: absolute;
+        left: calc(50% - 160px);
+        top: calc(20%);
+        margin-right: -50%;
+        width: $formSecurityWidth;
+        h3 {
+            margin-bottom: 1.5rem;
+        }
+    }
+
     @import "./_header.scss";
     @import "./_main.scss";
     @import "./_footer.scss";
