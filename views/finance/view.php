@@ -25,14 +25,4 @@ $this->params['breadcrumbs'][] = $this->title;
             'comment:ntext',
         ],
     ]) ?>
-    <p class="text-right">
-		<?= Html::a(Yii::t('app', 'Изменить'), ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
-		<?= Html::a(Yii::t('app', 'Удалить'), ['delete', 'id' => $model->id], [
-			'class' => 'btn btn-danger',
-			'data' => [
-				'confirm' => Yii::t('app', 'Точно удалить?'),
-				'method' => 'post',
-			],
-		]) ?>
-    </p>
 </div>

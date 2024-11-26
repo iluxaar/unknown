@@ -61,7 +61,7 @@ main {
       white-space: nowrap;
       a {
         color: $sortElementColor;
-        &.asc, &.desc {
+        /*&.asc, &.desc {
           color: $sortElementColor;
         }
         &.asc:after, &.desc:after {
@@ -81,7 +81,7 @@ main {
         &.desc:after {
           border-top: solid 7px $sortElementColor;
           border-bottom-width: 0;
-        }
+        }*/
       }
     }
     .action-column {

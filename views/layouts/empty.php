@@ -5,8 +5,10 @@
 
 use app\assets\AppAsset;
 use yii\bootstrap4\Html;
+use kartik\icons\Icon;
 
 AppAsset::register($this);
+Icon::map($this);
 ?>
 
 <?php $this->beginPage() ?>

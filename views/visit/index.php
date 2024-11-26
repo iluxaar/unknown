@@ -26,11 +26,11 @@ $this->params['breadcrumbs'][] = $this->title;
 	        [
 		        'attribute' => 'id',
 		        'format'=>'raw',
-		        'value' => static function ($model) {
+		        'value' => static function (Visit $model) {
 			        return Html::a(
                         $model->id,
                         ['view', 'id' => $model->id],
-                        ['class' => 'modal-ajax-link', 'data-pjax' => 0]
+                        ['class' => 'modal-ajax-link', 'data-pjax' => 0],
                     );
 		        },
                 'options' => [
@@ -40,7 +40,7 @@ $this->params['breadcrumbs'][] = $this->title;
 	        [
 		        'attribute' => 'clientName',
 		        'format'=>'raw',
-		        'value' => static function (\app\models\Visit $model) {
+		        'value' => static function (Visit $model) {
                     if ($model->client) {
 	                    return Html::a(
                             $model->client->name,

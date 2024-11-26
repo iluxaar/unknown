@@ -26,7 +26,10 @@
         "kartik-v/yii2-grid": "3.5.3",
         "kartik-v/yii2-widget-activeform": "1.6.4",
         "ivankff/yii2-modal-ajax": "4.1.0",
-        "skeeks/yii2-assets-auto-compress": "1.4.5.2"
+        "skeeks/yii2-assets-auto-compress": "1.4.5.2",
+        "kartik-v/yii2-editable": "1.8.0",
+        "kartik-v/yii2-icons": "1.4.8",
+        "kartik-v/yii2-detail-view": "1.8.7"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.1.0",

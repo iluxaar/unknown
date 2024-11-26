@@ -19,10 +19,22 @@ $this->params['breadcrumbs'][] = $this->title;
         'model' => $model,
         'attributes' => [
             'id',
-            'user.name',
-            'client.name',
-            'service.name',
-            'visit_datetime:datetime',
+            [
+                'attribute' => 'user_id',
+                'value' => $model->user->name,
+            ],
+	        [
+		        'attribute' => 'client_id',
+		        'value' => $model->client->name,
+	        ],
+	        [
+		        'attribute' => 'service_id',
+		        'value' => $model->service->name,
+	        ],
+	        [
+		        'attribute' => 'visit_datetime',
+		        'format' => 'datetime',
+	        ],
             [
                 'attribute' => 'status',
                 'value' => Html::tag('span', $model->getStatusName(), ['class' => "badge visit-status-{$model->status}"]),
@@ -32,14 +44,4 @@ $this->params['breadcrumbs'][] = $this->title;
             'comment:ntext',
         ],
     ]) ?>
-    <p class="text-right">
-		<?= Html::a(Yii::t('app', 'Изменить'), ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
-		<?= Html::a(Yii::t('app', 'Удалить'), ['delete', 'id' => $model->id], [
-			'class' => 'btn btn-danger',
-			'data' => [
-				'confirm' => Yii::t('app', 'Точно удалить?'),
-				'method' => 'post',
-			],
-		]) ?>
-    </p>
 </div>

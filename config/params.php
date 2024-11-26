@@ -6,5 +6,6 @@ return [
 	'supportEmail' => 'support@unknown.lc',
     'senderName' => 'Example.com mailer',
     'bsVersion' => '4.x',
+	'icon-framework' => \kartik\icons\Icon::FAS,
 	'useQueue' => true,
 ];
