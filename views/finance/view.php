@@ -16,10 +16,9 @@ $this->params['breadcrumbs'][] = $this->title;
     <?= DetailView::widget([
         'model' => $model,
         'attributes' => [
-            'type.name',
 	        'material.name',
             'user.name',
-	        'type.typeName',
+	        'typeName',
             'sum:decimal',
             'created_at:datetime',
             'comment:ntext',

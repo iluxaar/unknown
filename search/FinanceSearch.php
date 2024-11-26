@@ -19,7 +19,7 @@ class FinanceSearch extends Finance
     public function rules()
     {
         return [
-            [['id', 'type_id', 'user_id', 'material_id', 'visit_id', 'sum', 'financeType'], 'integer'],
+            [['id', 'type', 'user_id', 'material_id', 'visit_id', 'sum', 'financeType'], 'integer'],
             [['created_at', 'comment'], 'safe'],
         ];
     }
@@ -42,8 +42,7 @@ class FinanceSearch extends Finance
      */
     public function search($params)
     {
-        $query = Finance::find()
-            ->joinWith('type');
+        $query = Finance::find();
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
@@ -62,12 +61,11 @@ class FinanceSearch extends Finance
 
         $query->andFilterWhere([
             'id' => $this->id,
-            'type_id' => $this->type_id,
+            'type' => $this->type,
             'user_id' => $this->user_id,
             'material_id' => $this->material_id,
             'visit_id' => $this->visit_id,
             'sum' => $this->sum,
-	        'finance_type.type' => $this->financeType,
         ])->andFilterWhere(['like', 'comment', $this->comment]);
 	    
 	    if ($this->created_at) {

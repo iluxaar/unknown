@@ -24,19 +24,15 @@ $this->params['breadcrumbs'][] = $this->title;
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
+	    'showFooter' => true,
         'columns' => [
 	        [
-		        'attribute' => 'type_id',
-                'format' => 'raw',
-		        'filter' => FinanceType::list(),
-		        'value' => static function (Finance $model) {
-			        return Html::a($model->type->name, ['view', 'id' => $model->id], ['class' => 'modal-ajax-link', 'data-pjax' => 0]);
-		        },
-	        ],
-	        [
 		        'attribute' => 'material_id',
-                'value' => 'material.name',
+		        'format' => 'html',
 		        'filter' => Material::list(),
+		        'value' => static function (Finance $model) {
+			        return Html::a($model->material->name, ['view', 'id' => $model->id], ['class' => 'modal-ajax-link', 'data-pjax' => 0]);
+		        },
 	        ],
 	        [
 		        'attribute' => 'user_id',
@@ -44,11 +40,12 @@ $this->params['breadcrumbs'][] = $this->title;
 		        'filter' => User::list(),
 	        ],
 	        [
-		        'attribute' => 'financeType',
-		        'value' => 'type.typeName',
-		        'filter' => FinanceType::typesMap(),
+		        'attribute' => 'type',
+		        'value' => 'typeName',
+		        'filter' => Finance::typesMap(),
 	        ],
 	        [
+                'class' => \app\widgets\AmountColumn::class,
 		        'attribute' => 'sum',
 		        'format' => 'decimal',
                 'filter' => false,
@@ -66,7 +63,7 @@ $this->params['breadcrumbs'][] = $this->title;
 				        'todayHighlight' => true,
 				        'clearBtn' => true,
 				        'autoclose' => true,
-			        ]
+			        ],
 		        ],
 		        'options' => [
 			        'class' => 'grid-column-datetime',
@@ -85,7 +82,7 @@ $this->params['breadcrumbs'][] = $this->title;
 		        'template' => '{delete}',
 		        'urlCreator' => static function ($action, Finance $model) {
 			        return Url::toRoute([$action, 'id' => $model->id]);
-		        }
+		        },
 	        ],
         ],
     ]); ?>

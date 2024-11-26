@@ -8,7 +8,7 @@ use Yii;
  * This is the model class for table "finance".
  *
  * @property int $id
- * @property int $type_id Статья
+ * @property int $type Тип
  * @property int $user_id Мастер
  * @property int|null $material_id Материал
  * @property int|null $visit_id Запись (учет расхода на процедуре)
@@ -17,12 +17,17 @@ use Yii;
  * @property string|null $comment Комментарий
  *
  * @property Material $material
- * @property FinanceType $type
  * @property User $user
  * @property Visit $visit
  */
 class Finance extends \yii\db\ActiveRecord
 {
+	/** @var int Расход */
+	protected const TYPE_EXPENSE = 0;
+	
+	/** @var int Приход */
+	protected const TYPE_INCOME = 1;
+	
     /**
      * {@inheritdoc}
      */
@@ -37,12 +42,11 @@ class Finance extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['type_id', 'user_id', 'sum'], 'required'],
-            [['type_id', 'user_id', 'material_id', 'visit_id', 'sum'], 'integer'],
+            [['type', 'user_id', 'material_id', 'sum'], 'required'],
+            [['type', 'user_id', 'material_id', 'visit_id', 'sum'], 'integer'],
             [['created_at'], 'safe'],
             [['comment'], 'string'],
             [['material_id'], 'exist', 'skipOnError' => true, 'targetClass' => Material::class, 'targetAttribute' => ['material_id' => 'id']],
-            [['type_id'], 'exist', 'skipOnError' => true, 'targetClass' => FinanceType::class, 'targetAttribute' => ['type_id' => 'id']],
             [['user_id'], 'exist', 'skipOnError' => true, 'targetClass' => User::class, 'targetAttribute' => ['user_id' => 'id']],
             [['visit_id'], 'exist', 'skipOnError' => true, 'targetClass' => Visit::class, 'targetAttribute' => ['visit_id' => 'id']],
         ];
@@ -55,7 +59,7 @@ class Finance extends \yii\db\ActiveRecord
     {
         return [
             'id' => Yii::t('app', 'ID'),
-            'type_id' => Yii::t('app', 'Статья'),
+            'type' => Yii::t('app', 'Тип'),
             'user_id' => Yii::t('app', 'Добавил'),
 	        'user.name' => Yii::t('app', 'Добавил'),
             'material_id' => Yii::t('app', 'Материал'),
@@ -64,7 +68,7 @@ class Finance extends \yii\db\ActiveRecord
             'sum' => Yii::t('app', 'Сумма'),
             'created_at' => Yii::t('app', 'Время создания'),
             'comment' => Yii::t('app', 'Комментарий'),
-	        'financeType' => Yii::t('app', 'Тип'),
+	        'typeName' => Yii::t('app', 'Тип'),
         ];
     }
 
@@ -77,16 +81,43 @@ class Finance extends \yii\db\ActiveRecord
     {
         return $this->hasOne(Material::class, ['id' => 'material_id']);
     }
-
-    /**
-     * Gets query for [[Type]].
-     *
-     * @return \yii\db\ActiveQuery|\app\query\FinanceTypeQuery
-     */
-    public function getType()
-    {
-        return $this->hasOne(FinanceType::class, ['id' => 'type_id']);
-    }
+	
+	/**
+	 * @return string[]
+	 */
+	public static function typesMap()
+	{
+		return [
+			self::TYPE_EXPENSE => 'Расход',
+			self::TYPE_INCOME => 'Приход',
+		];
+	}
+	
+	/**
+	 * @return bool
+	 */
+	public function isExpense(): bool
+	{
+		return $this->type === self::TYPE_EXPENSE;
+	}
+	
+	/**
+	 * @return bool
+	 */
+	public function isIncome(): bool
+	{
+		return $this->type === self::TYPE_INCOME;
+	}
+	
+	/**
+	 * @return string|null
+	 */
+	public function getTypeName(): ?string
+	{
+		$typesMap = self::typesMap();
+		
+		return $typesMap[$this->type] ?? null;
+	}
 
     /**
      * Gets query for [[User]].

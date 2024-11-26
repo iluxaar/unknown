@@ -72,11 +72,6 @@ $controllerId = Yii::$app->controller->id;
                             'url' => ['/material/index'],
                             'active' => $controllerId === 'material',
                         ],
-	                    [
-		                    'label' => Yii::t('app', 'Статьи финансов'),
-		                    'url' => ['/finance-type/index'],
-		                    'active' => $controllerId === 'finance-type',
-	                    ],
                     ],
                     'active' => $controllerId === 'user' ||
                         $controllerId === 'service' ||

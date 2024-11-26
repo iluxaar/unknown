@@ -1,6 +1,6 @@
 <?php
 
-use app\models\FinanceType;
+use app\models\Finance;
 use app\models\Material;
 use app\models\User;
 use yii\helpers\Html;
@@ -14,7 +14,8 @@ use app\widgets\ActiveForm;
 <div class="finance-form">
     <?php $form = ActiveForm::begin(); ?>
 	<?= $form->field($model, 'user_id')->select2(User::list()) ?>
-    <?= $form->field($model, 'type_id')->select2(FinanceType::list()) ?>
+    <?= $form->field($model, 'type')->select2(Finance::typesMap(), ['placeholder' => false], ['allowClear' =>
+	    false, 'minimumResultsForSearch' => -1]) ?>
     <?= $form->field($model, 'material_id')->select2(Material::list()) ?>
     <?= $form->field($model, 'sum')->textInput() ?>
     <?= $form->field($model, 'comment')->textarea(['rows' => 3]) ?>
