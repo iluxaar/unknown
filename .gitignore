@@ -36,3 +36,6 @@ tests/_support/_generated
 #sass cache
 .sass-cache
 /web/.sass-cache
+
+#conf
+config/db-local.php
