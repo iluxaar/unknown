@@ -5,7 +5,7 @@ body {
     overflow-y: scroll;
 
     .container-fluid {
-        max-width: 1920px;
+        max-width: $pageMaxWidth;
     }
 
     .form-security {

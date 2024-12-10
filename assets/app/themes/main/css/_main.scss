@@ -11,7 +11,7 @@ main {
     right: 0;
     bottom: 0;
     margin: 80px auto 80px auto;
-    max-width: 1920px;
+    max-width: $pageMaxWidth;
     padding-left: 15px;
     padding-right: 15px;
     a {
