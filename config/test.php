@@ -26,16 +26,14 @@ return [
         ],
         'user' => [
             'identityClass' => 'app\models\User',
+	        'enableSession' => false,
         ],
         'request' => [
             'cookieValidationKey' => 'test',
             'enableCsrfValidation' => false,
-            // but if you absolutely need it set cookie domain to localhost
-            /*
-            'csrfCookie' => [
+            /*'csrfCookie' => [
                 'domain' => 'localhost',
-            ],
-            */
+            ],*/
         ],
     ],
     'params' => $params,
