@@ -1,6 +1,5 @@
 <?php
 
-use yii\swiftmailer\Mailer;
 use skeeks\yii2\assetsAuto\AssetsAutoCompressComponent;
 use yii\helpers\ArrayHelper;
 
@@ -9,7 +8,6 @@ $commonConfig = require __DIR__ . '/common.php';
 $config = [
     'id' => 'basic',
     'name' => 'ELStudio',
-    'language' => 'ru-RU',
 	'bootstrap' => [
 		//'assetsAutoCompress',
 	],
@@ -42,10 +40,6 @@ $config = [
 	    ],
         'errorHandler' => [
             'errorAction' => 'site/error',
-        ],
-        'mailer' => [
-            'class' => Mailer::class,
-            'useFileTransport' => true,
         ],
 	    'assetManager' => [
 		    'appendTimestamp' => true,
