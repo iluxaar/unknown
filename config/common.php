@@ -17,8 +17,14 @@ $config = [
 		'@npm'   => '@vendor/npm-asset',
 	],
 	'components' => [
+		'db' => $db,
 		'cache' => [
-			'class' => 'yii\caching\FileCache',
+			'class' => 'yii\redis\Cache',
+			'redis' => [
+				'hostname' => 'redis',
+				'port' => 6379,
+				'database' => 0,
+			]
 		],
 		'log' => [
 			'targets' => [
@@ -32,7 +38,6 @@ $config = [
 			'class' => Mailer::class,
 			'useFileTransport' => true,
 		],
-		'db' => $db,
 		'queue' => [
 			'class' => \yii\queue\db\Queue::class,
 			'db' => 'db',
