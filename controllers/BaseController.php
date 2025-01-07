@@ -7,6 +7,7 @@ use app\actions\DeleteAction;
 use app\actions\ListAction;
 use app\actions\UpdateAction;
 use app\actions\ViewAction;
+use yii\filters\AccessControl;
 use yii\filters\VerbFilter;
 use yii\web\Controller;
 
@@ -32,6 +33,15 @@ abstract class BaseController extends Controller
 		return array_merge(
 			parent::behaviors(),
 			[
+				'access' => [
+					'class' => AccessControl::class,
+					'rules' => [
+						[
+							'allow' => true,
+							'roles' => ['?'],
+						],
+					],
+				],
 				'verbs' => [
 					'class' => VerbFilter::class,
 					'actions' => [

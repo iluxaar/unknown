@@ -9,7 +9,7 @@ use Yii;
  *
  * @property int $id
  * @property int $type Тип
- * @property int $user_id Мастер
+ * @property int $user_id Косметолог
  * @property int|null $material_id Материал
  * @property int|null $visit_id Запись (учет расхода на процедуре)
  * @property int $sum Сумма

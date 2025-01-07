@@ -10,7 +10,7 @@ use app\widgets\GridView;
 /** @var app\search\ServiceSearch $searchModel */
 /** @var yii\data\ActiveDataProvider $dataProvider */
 
-$this->title = Yii::t('app', 'Услуги');
+$this->title = Yii::t('app', 'Процедуры');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="service-index">

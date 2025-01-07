@@ -14,9 +14,9 @@ use yii\db\ActiveQuery;
  * This is the model class for table "visit".
  *
  * @property int $id
- * @property int $user_id Мастер
+ * @property int $user_id Косметолог
  * @property int $client_id Клиент
- * @property int $service_id Услуга
+ * @property int $service_id Процедура
  * @property string $visit_datetime Время визита
  * @property int $status Статус записи
  * @property string|null $comment Примечание
@@ -74,12 +74,9 @@ class Visit extends \yii\db\ActiveRecord
     {
         return [
             'id' => Yii::t('app', 'Номер'),
-            'user_id' => Yii::t('app', 'Мастер'),
-	        'user.name' => Yii::t('app', 'Мастер'),
+            'user_id' => Yii::t('app', 'Косметолог'),
             'client_id' => Yii::t('app', 'Клиент'),
-	        'client.name' => Yii::t('app', 'Клиент'),
-            'service_id' => Yii::t('app', 'Услуга'),
-	        'service.name' => Yii::t('app', 'Услуга'),
+            'service_id' => Yii::t('app', 'Процедура'),
             'visit_datetime' => Yii::t('app', 'Время визита'),
             'status' => Yii::t('app', 'Статус'),
 	        'statusName' => Yii::t('app', 'Статус'),

@@ -63,13 +63,13 @@ $config = [
             ],
         ],
     ],
-	'on beforeRequest' => function ($event) {
+	/*'on beforeRequest' => function ($event) {
 		if (Yii::$app->user->isGuest) {
 			if (Yii::$app->request->url != '/login' && Yii::$app->request->url != '/registration') {
 				Yii::$app->response->redirect(['/login']);
 			}
 		}
-	},
+	},*/
 ];
 
 if (YII_ENV_DEV) {

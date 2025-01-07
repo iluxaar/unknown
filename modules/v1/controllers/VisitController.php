@@ -54,6 +54,6 @@ class VisitController extends Controller
 	#[InvalidValidationResponse]
 	public function actionList($start, $end): array
 	{
-		return $this->visitFindService->getByUserId(\Yii::$app->user->id, $start, $end);
+		return $this->visitFindService->get($start, $end);
 	}
 }

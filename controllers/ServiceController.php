@@ -9,7 +9,7 @@ use app\search\ServiceSearch;
  * Class ServiceController
  * @package app\controllers
  *
- * Номенклатура услуг
+ * Номенклатура процедур
  */
 class ServiceController extends BaseController implements ControllerInterface
 {

@@ -58,7 +58,7 @@ class UserForm extends Model
 	public function attributeLabels(): array
 	{
 		return [
-			'name' => Yii::t('app', 'Имя мастера'),
+			'name' => Yii::t('app', 'Имя'),
 			'email' => Yii::t('app', 'Email'),
 			'mobile_phone' => Yii::t('app', 'Номер телефона'),
 		];

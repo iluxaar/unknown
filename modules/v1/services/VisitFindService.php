@@ -20,17 +20,15 @@ class VisitFindService
 	}
 	
 	/**
-	 * @param $userId
 	 * @param $start
 	 * @param $end
 	 * @return array|Visit[]
 	 * @throws InvalidConfigException
 	 */
-	public function getByUserId($userId, $start, $end): array
+	public function get($start, $end): array
 	{
 		$models = $this->getBaseQuery()
-			->where(['user_id' => $userId])
-			->andWhere(['>=', 'visit_datetime', $start])
+			->where(['>=', 'visit_datetime', $start])
 			->andWhere(['<=', 'visit_datetime', $end])
 			->all();
 		
@@ -49,15 +47,15 @@ class VisitFindService
 	}
 	
 	/**
-	 * @param $visit
+	 * @param Visit $visit
 	 * @return VisitEntity
 	 * @throws InvalidConfigException
 	 */
-	protected function getEntity($visit): VisitEntity
+	protected function getEntity(Visit $visit): VisitEntity
 	{
 		return new VisitEntity(
 			$visit->id,
-			$visit->service->name,
+			$visit->client->name,
 			\Yii::$app->formatter->asDatetime($visit->visit_datetime, 'yyyy-MM-dd') .
 			'T'. \Yii::$app->formatter->asDatetime($visit->visit_datetime, 'HH:mm:ss'),
 			$visit->getStatusColor()

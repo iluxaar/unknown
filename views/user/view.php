@@ -6,13 +6,13 @@ use app\widgets\DetailView;
 /** @var app\models\User $model */
 
 $this->title = $model->name;
-$this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Мастера'), 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Косметологи'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 \yii\web\YiiAsset::register($this);
 ?>
 <div class="user-view">
     <h1>
-        Просмотр мастера
+        Просмотр
     </h1>
     <?= DetailView::widget([
         'model' => $model,

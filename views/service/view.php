@@ -6,13 +6,13 @@ use app\widgets\DetailView;
 /** @var app\models\Service $model */
 
 $this->title = $model->name;
-$this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Услуги'), 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Процедуры'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 \yii\web\YiiAsset::register($this);
 ?>
 <div class="service-view">
     <h1>
-        Просмотр услуги
+        Просмотр
     </h1>
     <?= DetailView::widget([
         'model' => $model,

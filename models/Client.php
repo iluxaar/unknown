@@ -50,7 +50,7 @@ class Client extends \yii\db\ActiveRecord
     {
         return [
             'id' => Yii::t('app', 'ID'),
-            'name' => Yii::t('app', 'Имя'),
+            'name' => Yii::t('app', 'ФИО'),
             'mobile_phone' => Yii::t('app', 'Номер телефона'),
             'birthday' => Yii::t('app', 'День рождения'),
 	        'created_at' => Yii::t('app', 'Добавлен'),

@@ -58,12 +58,12 @@ $controllerId = Yii::$app->controller->id;
                     'label' => Yii::t('app', 'Справочники'),
                     'items' => [
                         [
-                            'label' => Yii::t('app', 'Мастера'),
+                            'label' => Yii::t('app', 'Косметологи'),
                             'url' => ['/user/index'],
                             'active' => $controllerId === 'user',
                         ],
                         [
-                            'label' => Yii::t('app', 'Услуги'),
+                            'label' => Yii::t('app', 'Процедуры'),
                             'url' => ['/service/index'],
                             'active' => $controllerId === 'service',
                         ],
@@ -77,14 +77,14 @@ $controllerId = Yii::$app->controller->id;
                         $controllerId === 'service' ||
                         $controllerId === 'material',
                 ],
-	            '<li class="nav-item">'
+	            /*'<li class="nav-item">'
 	            . Html::beginForm(['/logout'])
 	            . Html::submitButton(
 		            Yii::t('app', 'Выйти'),
 		            ['class' => 'nav-link btn btn-link logout']
 	            )
 	            . Html::endForm()
-	            . '</li>'
+	            . '</li>'*/
             ],
         ]);
         NavBar::end();

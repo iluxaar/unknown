@@ -10,7 +10,7 @@ use app\widgets\GridView;
 /** @var app\search\UserSearch $searchModel */
 /** @var yii\data\ActiveDataProvider $dataProvider */
 
-$this->title = Yii::t('app', 'Мастера');
+$this->title = Yii::t('app', 'Косметологи');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="user-index">
