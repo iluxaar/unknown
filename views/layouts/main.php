@@ -50,11 +50,6 @@ $controllerId = Yii::$app->controller->id;
                     'active' => $controllerId === 'client',
                 ],
                 [
-                    'label' => Yii::t('app', 'Финансы'),
-                    'url' => ['/finance/index'],
-                    'active' => $controllerId === 'finance',
-                ],
-                [
                     'label' => Yii::t('app', 'Справочники'),
                     'items' => [
                         [
