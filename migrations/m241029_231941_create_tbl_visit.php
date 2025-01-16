@@ -21,7 +21,7 @@ class m241029_231941_create_tbl_visit extends Migration
 			'service_id' => $this->integer()->notNull()->comment('Процедура'),
 			'visit_datetime' => $this->dateTime()->notNull()->comment('Время визита'),
 			'status' => $this->smallInteger()->notNull()->defaultValue(0)->comment('Статус записи'),
-			'created_at' => $this->dateTime()->notNull()->defaultExpression('CURRENT_TIMESTAMP')->comment('Время добавления'),
+			'created_at' => $this->dateTime()->notNull()->defaultExpression('CURRENT_TIMESTAMP')->comment('Создан'),
 			'comment' => $this->text()->comment('Примечание'),
 		]);
 		

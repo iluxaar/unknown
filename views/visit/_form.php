@@ -1,8 +1,5 @@
 <?php
 
-use app\models\Client;
-use app\models\Service;
-use app\models\User;
 use app\models\Visit;
 use yii\helpers\Html;
 use app\widgets\ActiveForm;
@@ -14,13 +11,10 @@ use app\widgets\ActiveForm;
 
 <div class="visit-form">
     <?php $form = ActiveForm::begin(); ?>
-    <?= $form->field($model, 'user_id')->select2(User::list()) ?>
-	<?= $form->field($model, 'client_id')->select2(Client::list()) ?>
-	<?= $form->field($model, 'service_id')->select2(Service::list()) ?>
-    <?= $form->field($model, 'visit_datetime')->dateTimePicker() ?>
 	<?= $form->field($model, 'status')->select2(Visit::statusList(), ['placeholder' => false], ['allowClear' =>
-        false, 'minimumResultsForSearch' => -1]) ?>
-    <?= $form->field($model, 'comment')->textarea(['rows' => 3]) ?>
+		false, 'minimumResultsForSearch' => -1]) ?>
+    <?= $form->field($model, 'visit_datetime')->dateTimePicker() ?>
+    <?= $form->field($model, 'complaint')->textarea(['rows' => 5]) ?>
     <div class="form-group">
         <?= Html::submitButton(Yii::t('app', 'Сохранить'), ['class' => 'btn btn-success']) ?>
     </div>

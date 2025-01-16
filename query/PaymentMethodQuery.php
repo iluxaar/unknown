@@ -3,11 +3,11 @@
 namespace app\query;
 
 /**
- * This is the ActiveQuery class for [[\app\models\Material]].
+ * This is the ActiveQuery class for [[\app\models\PaymentMethod]].
  *
- * @see \app\models\Material
+ * @see \app\models\PaymentMethod
  */
-class MaterialQuery extends \yii\db\ActiveQuery
+class PaymentMethodQuery extends \yii\db\ActiveQuery
 {
     /*public function active()
     {
@@ -16,7 +16,7 @@ class MaterialQuery extends \yii\db\ActiveQuery
 
     /**
      * {@inheritdoc}
-     * @return \app\models\Material[]|array
+     * @return \app\models\PaymentMethod[]|array
      */
     public function all($db = null)
     {
@@ -25,7 +25,7 @@ class MaterialQuery extends \yii\db\ActiveQuery
 
     /**
      * {@inheritdoc}
-     * @return \app\models\Material|array|null
+     * @return \app\models\PaymentMethod|array|null
      */
     public function one($db = null)
     {

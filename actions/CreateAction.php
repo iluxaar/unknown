@@ -26,11 +26,6 @@ class CreateAction extends Action
 	public string $view = 'create';
 	
 	/**
-	 * @var array
-	 */
-	public array $defaultValues = [];
-	
-	/**
 	 * @return string|true[]|Response
 	 * @throws InvalidConfigException
 	 * @throws Exception
@@ -39,10 +34,6 @@ class CreateAction extends Action
 	{
 		/** @var ActiveRecord $model */
 		$model = Yii::createObject($this->modelName);
-		
-		if (!empty($this->defaultValues)) {
-			$model->setAttributes($this->defaultValues);
-		}
 		
 		if ($this->controller->request->isPost) {
 			if ($model->load($this->controller->request->post()) && $model->save()) {

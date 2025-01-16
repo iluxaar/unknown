@@ -3,6 +3,7 @@
 body {
     font-weight: $bodyFontWeight !important;
     overflow-y: scroll;
+    min-width: 1280px;
 
     .container-fluid {
         max-width: $pageMaxWidth;

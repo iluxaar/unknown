@@ -1,6 +1,5 @@
 <?php
 
-use kartik\date\DatePicker;
 use yii\helpers\Html;
 use app\widgets\ActiveForm;
 use yii\widgets\MaskedInput;

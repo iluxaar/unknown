@@ -13,16 +13,11 @@ class AmountColumn extends DataColumn
 	 */
 	protected function renderFooterCellContent(): ?string
 	{
-		$sum = 0;
+		$sum = null;
 		$dataProvider = $this->grid->dataProvider;
 		
-		/** @var Finance $model */
 		foreach ($dataProvider->models as $model) {
-			if ($model->isIncome()) {
-				$sum += $model->sum;
-			} elseif ($model->isExpense()) {
-				$sum -= $model->sum;
-			}
+			$sum += $model->sum;
 		}
 		
 		return Yii::$app->formatter->asDecimal($sum);

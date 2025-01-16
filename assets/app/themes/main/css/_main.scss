@@ -24,7 +24,7 @@ main {
       tr {
         &:hover {
           color: $sortElementColor;
-          background-color: rgb(253, 249, 229);
+          background-color: #f5f5f5;
         }
       }
     }
@@ -61,7 +61,7 @@ main {
       white-space: nowrap;
       a {
         color: $sortElementColor;
-        /*&.asc, &.desc {
+        &.asc, &.desc {
           color: $sortElementColor;
         }
         &.asc:after, &.desc:after {
@@ -81,21 +81,35 @@ main {
         &.desc:after {
           border-top: solid 7px $sortElementColor;
           border-bottom-width: 0;
-        }*/
+        }
       }
     }
     .action-column {
       width: 38px;
+      .dropdown {
+        .dropdown-toggle {
+          padding-top: 0;
+          padding-bottom: 0;
+          &:after {
+            display: none;
+          }
+        }
+      }
     }
     .grid-column-datetime,
     .grid-column-visit-status {
       width: 160px;
     }
     .grid-column-sum {
+      text-align: right;
       width: 140px;
+      white-space: nowrap;
     }
     .grid-column-id {
       width: 100px;
+    }
+    .grid-column-procedure {
+      width: 35%;
     }
     .grid-footer {
       position: fixed;
@@ -119,6 +133,30 @@ main {
     }
   }
 
+  .inline-search {
+    float: left;
+    margin-bottom: 0.7rem;
+    .form-group {
+      margin-right: 5px;
+    }
+    .search-reset-button {
+      margin-right: 5px;
+    }
+  }
+
+  .detail-view {
+    tbody {
+      tr {
+        th {
+          width: 280px;
+        }
+      }
+    }
+  }
+
+  .nav-tabs {
+    margin-bottom: 25px;
+  }
 
   .not-set {
     color: #c55;
@@ -126,12 +164,18 @@ main {
   }
 
   .breadcrumb {
+    background-color: #f0f8ff;
     .active {
       font-weight: bold;
       &:before {
         font-weight: normal;
       }
     }
+  }
+
+  .alert {
+    padding: 0.25rem 0.7rem;
+    border-radius: 0;
   }
 
   .error-summary {
@@ -156,6 +200,9 @@ main {
     &.visit-status-0 {
       background-color: $badgeBlue;
     }
+    &.visit-status-1 {
+      background-color: $badgeYellow;
+    }
     &.visit-status-5 {
       background-color: $badgeGreen;
     }
@@ -171,6 +218,15 @@ main {
     &.show {
       opacity: 1;
       transform: scale(1);
+    }
+  }
+
+  .sub-table {
+    font-size: 0.8rem;
+    background-color: #f7fbff;
+    margin: 0;
+    tfoot {
+      font-weight: bold;
     }
   }
 

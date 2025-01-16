@@ -4,8 +4,8 @@
 /** @var string $content */
 
 use app\widgets\Alert;
+use app\widgets\ModalAjax;
 use yii\bootstrap4\Breadcrumbs;
-use yii\bootstrap4\Html;
 use yii\bootstrap4\Nav;
 use yii\bootstrap4\NavBar;
 
@@ -40,32 +40,22 @@ $controllerId = Yii::$app->controller->id;
 		            'url' => ['/site/index'],
 	            ],
                 [
-                    'label' => Yii::t('app', 'Записи'),
-                    'url' => ['/visit/index'],
-                    'active' => $controllerId === 'visit',
-                ],
-                [
                     'label' => Yii::t('app', 'Клиенты'),
                     'url' => ['/client/index'],
-                    'active' => $controllerId === 'client',
+                    'active' => $controllerId === 'client' || $controllerId === 'visit',
                 ],
                 [
                     'label' => Yii::t('app', 'Справочники'),
                     'items' => [
-                        [
-                            'label' => Yii::t('app', 'Косметологи'),
-                            'url' => ['/user/index'],
-                            'active' => $controllerId === 'user',
-                        ],
                         [
                             'label' => Yii::t('app', 'Процедуры'),
                             'url' => ['/service/index'],
                             'active' => $controllerId === 'service',
                         ],
                         [
-                            'label' => Yii::t('app', 'Материалы'),
-                            'url' => ['/material/index'],
-                            'active' => $controllerId === 'material',
+                            'label' => Yii::t('app', 'Способы оплаты'),
+                            'url' => ['/payment-method/index'],
+                            'active' => $controllerId === 'payment-method',
                         ],
                     ],
                     'active' => $controllerId === 'user' ||
@@ -93,6 +83,10 @@ $controllerId = Yii::$app->controller->id;
             ]) ?>
             <?= Alert::widget() ?>
             <?= $content ?>
+            <?= ModalAjax::widget([
+                'selector' => 'a.modal-ajax-link',
+	            'pjaxContainer' => "#pjax-container",
+            ]) ?>
         </div>
     </main>
 

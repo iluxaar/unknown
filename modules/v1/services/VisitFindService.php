@@ -6,6 +6,7 @@ use app\models\Visit;
 use app\modules\v1\entities\visit\VisitEntity;
 use app\query\VisitQuery;
 use yii\base\InvalidConfigException;
+use yii\helpers\Url;
 
 class VisitFindService
 {
@@ -39,7 +40,7 @@ class VisitFindService
 				'title' => $entity->getTitle(),
 				'start' => $entity->getStart(),
 				'color' => $entity->getColor(),
-				'url' => 'visit/' . $entity->getId(),
+				'url' => Url::toRoute(['/visit/index', 'clientId' => $entity->getClientId()]),
 			];
 		}
 		
@@ -55,10 +56,11 @@ class VisitFindService
 	{
 		return new VisitEntity(
 			$visit->id,
+			$visit->client_id,
 			$visit->client->name,
 			\Yii::$app->formatter->asDatetime($visit->visit_datetime, 'yyyy-MM-dd') .
 			'T'. \Yii::$app->formatter->asDatetime($visit->visit_datetime, 'HH:mm:ss'),
-			$visit->getStatusColor()
+			$visit->getStatusColor(),
 		);
 	}
 	

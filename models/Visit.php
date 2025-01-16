@@ -3,34 +3,41 @@
 namespace app\models;
 
 use app\query\ClientQuery;
-use app\query\ServiceQuery;
-use app\query\UserQuery;
+use app\query\PaymentQuery;
+use app\query\VisitProcedureQuery;
 use app\query\VisitQuery;
 use Yii;
 use yii\base\InvalidConfigException;
 use yii\db\ActiveQuery;
+use yii\db\ActiveRecord;
 
 /**
  * This is the model class for table "visit".
  *
  * @property int $id
- * @property int $user_id Косметолог
  * @property int $client_id Клиент
- * @property int $service_id Процедура
  * @property string $visit_datetime Время визита
  * @property int $status Статус записи
- * @property string|null $comment Примечание
+ * @property-read null|string $statusName
+ * @property-read null|string $statusColor
+ * @property string|null $complaint Жалобы
+ * @property VisitProcedure[] $visitProcedures Процедуры
+ * @property Payment[] $payments Оплаты
+ * @property int $debt Задолженность
  *
  * @property Client $client
- * @property Service $service
- * @property User $user
  */
-class Visit extends \yii\db\ActiveRecord
+class Visit extends ActiveRecord
 {
 	/**
-	 * Запись новая
+	 * Запись
 	 */
 	public const STATUS_OPEN = 0;
+	
+	/**
+	 * Запланирован
+	 */
+	public const STATUS_PLAN = 1;
 	
 	/**
 	 * Выполнено
@@ -56,14 +63,12 @@ class Visit extends \yii\db\ActiveRecord
     public function rules(): array
     {
         return [
-            [['user_id', 'client_id', 'service_id', 'visit_datetime', 'status'], 'required'],
-            [['user_id', 'client_id', 'service_id', 'status'], 'integer'],
+            [['client_id', 'visit_datetime', 'status'], 'required'],
+            [['client_id', 'status'], 'integer'],
 	        ['status', 'default', 'value' => self::STATUS_OPEN],
             [['visit_datetime'], 'safe'],
-            [['comment'], 'string'],
+            [['complaint'], 'string'],
             [['client_id'], 'exist', 'skipOnError' => true, 'targetClass' => Client::class, 'targetAttribute' => ['client_id' => 'id']],
-            [['service_id'], 'exist', 'skipOnError' => true, 'targetClass' => Service::class, 'targetAttribute' => ['service_id' => 'id']],
-            [['user_id'], 'exist', 'skipOnError' => true, 'targetClass' => User::class, 'targetAttribute' => ['user_id' => 'id']],
         ];
     }
 
@@ -74,16 +79,16 @@ class Visit extends \yii\db\ActiveRecord
     {
         return [
             'id' => Yii::t('app', 'Номер'),
-            'user_id' => Yii::t('app', 'Косметолог'),
             'client_id' => Yii::t('app', 'Клиент'),
-            'service_id' => Yii::t('app', 'Процедура'),
             'visit_datetime' => Yii::t('app', 'Время визита'),
             'status' => Yii::t('app', 'Статус'),
 	        'statusName' => Yii::t('app', 'Статус'),
 	        'created_at' => Yii::t('app', 'Добавлено'),
-            'comment' => Yii::t('app', 'Примечание'),
+            'complaint' => Yii::t('app', 'Жалобы'),
 	        'clientName' => Yii::t('app', 'Клиент'),
 	        'clientMobilePhone' => Yii::t('app', 'Моб. номер'),
+	        'visitProcedures' => Yii::t('app', 'Процедуры'),
+	        'payments' => Yii::t('app', 'Платежи'),
         ];
     }
 	
@@ -93,9 +98,10 @@ class Visit extends \yii\db\ActiveRecord
 	public static function statusList(): array
 	{
 		return [
-			self::STATUS_OPEN => 'Новая',
-			self::STATUS_COMPLETE => 'Выполнена',
-			self::STATUS_CANCEL => 'Отменена',
+			self::STATUS_OPEN => 'Запись',
+			self::STATUS_PLAN => 'Запланирован',
+			self::STATUS_COMPLETE => 'Выполнен',
+			self::STATUS_CANCEL => 'Отменен',
 		];
 	}
 
@@ -108,26 +114,22 @@ class Visit extends \yii\db\ActiveRecord
     {
         return $this->hasOne(Client::class, ['id' => 'client_id']);
     }
-
-    /**
-     * Gets query for [[Service]].
-     *
-     * @return ActiveQuery|ServiceQuery
-     */
-    public function getService(): ActiveQuery|ServiceQuery
-    {
-        return $this->hasOne(Service::class, ['id' => 'service_id']);
-    }
-
-    /**
-     * Gets query for [[User]].
-     *
-     * @return ActiveQuery|UserQuery
-     */
-    public function getUser(): ActiveQuery|UserQuery
-    {
-        return $this->hasOne(User::class, ['id' => 'user_id']);
-    }
+	
+	/**
+	 * @return ActiveQuery|VisitProcedureQuery
+	 */
+	public function getVisitProcedures(): ActiveQuery|VisitProcedureQuery
+	{
+		return $this->hasMany(VisitProcedure::class, ['visit_id' => 'id']);
+	}
+	
+	/**
+	 * @return ActiveQuery|VisitProcedureQuery
+	 */
+	public function getPayments(): ActiveQuery|PaymentQuery
+	{
+		return $this->hasMany(Payment::class, ['visit_id' => 'id']);
+	}
 	
 	/**
 	 * @return string|null
@@ -146,11 +148,24 @@ class Visit extends \yii\db\ActiveRecord
 	{
 		$colors = [
 			self::STATUS_OPEN => '#007bff',
+			self::STATUS_PLAN => '#6c757d',
 			self::STATUS_COMPLETE => '#28a745',
 			self::STATUS_CANCEL => '#dc3545',
 		];
 		
 		return $colors[$this->status] ?? null;
+	}
+	
+	/**
+	 * @return int
+	 */
+	public function getDebt(): int
+	{
+		$procedureSum = $this->getVisitProcedures()->sum('sum');
+		$paymentSum = $this->getPayments()->sum('sum');
+		$debt = $procedureSum - $paymentSum;
+		
+		return $debt > 0 ? $debt : 0;
 	}
 
     /**

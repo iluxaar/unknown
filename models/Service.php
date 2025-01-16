@@ -52,13 +52,13 @@ class Service extends \yii\db\ActiveRecord
 	 */
 	public static function list(): array
 	{
-		$users = self::find()
+		$services = self::find()
 			->select(['id', 'name'])
 			->orderBy('name')
 			->asArray()
 			->all();
 		
-		return ArrayHelper::map($users, 'id', 'name');
+		return ArrayHelper::map($services, 'id', 'name');
 	}
 
     /**

@@ -16,5 +16,5 @@ FullCalendarAsset::register($this);
     <div id='calendar'></div>
 </div>
 <?= ModalAjax::widget([
-	'selector' => 'a.fc-event',
+	//'selector' => 'a.fc-event',
 ]) ?>

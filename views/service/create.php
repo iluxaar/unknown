@@ -5,14 +5,11 @@ use yii\helpers\Html;
 /** @var yii\web\View $this */
 /** @var app\models\Service $model */
 
-$this->title = Yii::t('app', 'Добавить');
-$this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Процедуры'), 'url' => ['index']];
-$this->params['breadcrumbs'][] = $this->title;
+$this->title = Yii::t('app', 'Добавить процедуру');
 ?>
+
 <div class="service-create">
-    <h1>
-        Добавить
-    </h1>
+    <h1><?= Html::encode($this->title) ?></h1>
     <?= $this->render('_form', [
         'model' => $model,
     ]) ?>

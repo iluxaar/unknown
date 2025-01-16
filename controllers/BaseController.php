@@ -7,7 +7,7 @@ use app\actions\DeleteAction;
 use app\actions\ListAction;
 use app\actions\UpdateAction;
 use app\actions\ViewAction;
-use yii\filters\AccessControl;
+use app\traits\FindModelTrait;
 use yii\filters\VerbFilter;
 use yii\web\Controller;
 
@@ -20,6 +20,8 @@ use yii\web\Controller;
  */
 abstract class BaseController extends Controller
 {
+	use FindModelTrait;
+	
 	/**
 	 * @var array
 	 */
@@ -33,15 +35,6 @@ abstract class BaseController extends Controller
 		return array_merge(
 			parent::behaviors(),
 			[
-				'access' => [
-					'class' => AccessControl::class,
-					'rules' => [
-						[
-							'allow' => true,
-							'roles' => ['?'],
-						],
-					],
-				],
 				'verbs' => [
 					'class' => VerbFilter::class,
 					'actions' => [
@@ -69,7 +62,6 @@ abstract class BaseController extends Controller
 			'create' => [
 				'class' => CreateAction::class,
 				'modelName' => $this->modelName,
-				'defaultValues' => $this->defaultValues,
 			],
 			'update' => [
 				'class' => UpdateAction::class,

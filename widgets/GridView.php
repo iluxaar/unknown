@@ -8,13 +8,13 @@ use Throwable;
  * Class GridView
  * @package app\widgets
  */
-class GridView extends \kartik\grid\GridView
+class GridView extends \yii\grid\GridView
 {
 	/**
 	 * @var string[]
 	 */
 	public $tableOptions = [
-		'class' => 'table table-striped table-hover',
+		'class' => 'table',
 	];
 	
 	/**
@@ -28,11 +28,6 @@ class GridView extends \kartik\grid\GridView
 	 * @var string
 	 */
 	public $layout = "{items}\n<div class='container-fluid grid-footer'>{summary}\n{pager}</div>";
-	
-	/**
-	 * @var bool
-	 */
-	public $resizableColumns = false;
 	
 	/**
 	 * @var bool

@@ -1,10 +1,10 @@
 <?php
 
 use app\models\Service;
+use app\widgets\DropdownActionColumn;
 use yii\helpers\Html;
-use yii\helpers\Url;
-use yii\grid\ActionColumn;
 use app\widgets\GridView;
+use yii\widgets\Pjax;
 
 /** @var yii\web\View $this */
 /** @var app\search\ServiceSearch $searchModel */
@@ -14,36 +14,45 @@ $this->title = Yii::t('app', 'Процедуры');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="service-index">
-    <p class="text-right">
-        <?= Html::a(Yii::t('app', 'Добавить'), ['create'], ['class' => 'btn btn-success modal-ajax-link']) ?>
-    </p>
-    <?= GridView::widget([
-        'dataProvider' => $dataProvider,
-        'filterModel' => $searchModel,
-        'columns' => [
-	        [
-		        'attribute' => 'name',
-		        'format'=>'raw',
-		        'value' => static function ($model) {
-			        return Html::a($model->name, ['view', 'id' => $model->id], ['class' => 'modal-ajax-link', 'data-pjax' => 0]);
-		        },
-	        ],
-            'price:decimal',
-	        [
-		        'class' => ActionColumn::class,
-		        'template' => '{update}',
-		        'urlCreator' => static function ($action, Service $model) {
-			        return Url::toRoute([$action, 'id' => $model->id]);
-		        },
-		        'buttonOptions' => ['class' => 'modal-ajax-link'],
-	        ],
-	        [
-		        'class' => ActionColumn::class,
-		        'template' => '{delete}',
-		        'urlCreator' => static function ($action, Service $model) {
-			        return Url::toRoute([$action, 'id' => $model->id]);
-		        }
-	        ],
-        ],
-    ]) ?>
+	<?php Pjax::begin(); ?>
+        <?= $this->render('_search', [
+            'model' => $searchModel,
+        ]) ?>
+        <?= Html::a(
+            Yii::t('app', 'Добавить'),
+            ['create'],
+            ['class' => 'float-right btn btn-success modal-ajax-link']
+        ) ?>
+        <?= GridView::widget([
+            'dataProvider' => $dataProvider,
+            'columns' => [
+                [
+                    'attribute' => 'name',
+                ],
+                'price:decimal',
+                [
+                    'class' => DropdownActionColumn::class,
+                    'items' => static function (Service $model) {
+                        return [
+                            [
+                                'label' => 'Редактировать',
+                                'url' => ['update', 'id' => $model->id],
+                                'linkOptions' => [
+                                    'class' => 'modal-ajax-link',
+                                ],
+                            ],
+                            [
+                                'label' => 'Удалить',
+                                'url' => ['delete', 'id' => $model->id],
+                                'linkOptions' => [
+                                    'data-confirm' => Yii::t('yii', 'Are you sure you want to delete this item?'),
+                                    'data-method' => 'post',
+                                ]
+                            ],
+                        ];
+                    },
+                ],
+            ],
+        ]) ?>
+    <?php Pjax::end(); ?>
 </div>

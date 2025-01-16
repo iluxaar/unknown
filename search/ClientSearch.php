@@ -11,9 +11,6 @@ use app\models\Client;
  */
 class ClientSearch extends Client
 {
-	public $visitCount;
-	
-	public $lastVisitDatetime;
 	
 	/**
 	 * @return array[]
@@ -21,8 +18,7 @@ class ClientSearch extends Client
     public function rules(): array
     {
         return [
-            [['id'], 'integer'],
-            [['name', 'mobile_phone', 'birthday', 'comment', 'visitCount'], 'safe'],
+            [['name', 'mobile_phone'], 'safe'],
         ];
     }
 	
@@ -46,20 +42,15 @@ class ClientSearch extends Client
             'query' => $query,
 	        'sort' => [
 		        'defaultOrder' => [
-			        'id' => SORT_DESC,
+			        'created_at' => SORT_DESC,
 		        ]
 	        ],
         ]);
 
         $this->load($params);
-
         if (!$this->validate()) {
             return $dataProvider;
         }
-
-        $query->andFilterWhere([
-            'id' => $this->id,
-        ]);
 
         $query->andFilterWhere(['like', 'name', $this->name])
             ->andFilterWhere(['like', 'mobile_phone', $this->mobile_phone]);

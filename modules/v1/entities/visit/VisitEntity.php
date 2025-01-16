@@ -18,6 +18,9 @@ class VisitEntity implements Arrayable
 		#[OA\Property(title: 'id', type: 'integer')]
 		private readonly int $id,
 		
+		#[OA\Property(title: 'client_id', type: 'integer')]
+		private readonly int $client_id,
+		
 		#[OA\Property(title: 'title', type: 'string')]
 		private readonly string $title,
 		
@@ -35,6 +38,14 @@ class VisitEntity implements Arrayable
 	public function getId(): int
 	{
 		return $this->id;
+	}
+	
+	/**
+	 * @return int
+	 */
+	public function getClientId(): int
+	{
+		return $this->client_id;
 	}
 	
 	/**
