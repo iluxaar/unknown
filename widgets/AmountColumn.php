@@ -2,7 +2,6 @@
 
 namespace app\widgets;
 
-use app\models\Finance;
 use Yii;
 use yii\grid\DataColumn;
 
