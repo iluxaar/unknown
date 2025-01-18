@@ -188,6 +188,10 @@ main {
     color: #721c24;
   }
 
+  .show {
+    transition: opacity 20ms;
+  }
+
   .error-summary {
     color: $errorColor;
     background: $errorSummaryBgColor;
