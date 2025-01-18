@@ -36,7 +36,10 @@ class ClientSearch extends Client
 	 */
     public function search(array $params): ActiveDataProvider
     {
-        $query = Client::find();
+        $query = Client::find()->with([
+	        'visits.visitProcedures',
+			'visits.payments'
+        ]);
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,

@@ -67,7 +67,11 @@ $this->params['breadcrumbs'][] = ['label' => $client->name];
 					]);
      
 					if ($model->payments && $debt = $model->debt) {
-						$html .= Html::tag('div', "Задолженность: <b>{$model->debt}</b>", ['class' => 'alert alert-danger']);
+						$html .= Html::tag(
+                            'div',
+                            Yii::$app->formatter->asDecimal($debt),
+                            ['class' => 'alert alert-danger alert-debt']
+                        );
 					}
                     
                     return $html;

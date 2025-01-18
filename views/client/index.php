@@ -39,6 +39,18 @@ $this->params['breadcrumbs'][] = $this->title;
                     'attribute' => 'birthday',
                     'filter' => false,
                 ],
+	            'visitCount',
+                [
+                    'attribute' => 'debt',
+                    'format' => 'decimal',
+	                'contentOptions' => [
+		                'class' => 'text-danger',
+	                ],
+                    'value' => static function (Client $model) {
+                        $debt = $model->debt;
+	                    return $debt > 0 ? $debt : null;
+                    },
+                ],
                 'created_at:datetime',
                 'comment:ntext',
                 [

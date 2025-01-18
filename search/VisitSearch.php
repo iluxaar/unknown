@@ -2,7 +2,6 @@
 
 namespace app\search;
 
-use yii\base\InvalidConfigException;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
 use app\models\Visit;

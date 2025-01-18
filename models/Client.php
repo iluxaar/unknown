@@ -16,6 +16,9 @@ use yii\helpers\ArrayHelper;
  * @property string $mobile_phone Номер телефона
  * @property string|null $birthday День рождения
  * @property string|null $comment Комментарий
+ * @property Visit[] $visits Визиты
+ * @property int $visitCount Количество визитов
+ * @property int $debt Долг
  */
 class Client extends \yii\db\ActiveRecord
 {
@@ -55,7 +58,8 @@ class Client extends \yii\db\ActiveRecord
             'birthday' => Yii::t('app', 'День рождения'),
 	        'created_at' => Yii::t('app', 'Добавлен'),
             'comment' => Yii::t('app', 'Примечание'),
-	        'visitsCount' => Yii::t('app', 'Кол-во визитов'),
+	        'visitCount' => Yii::t('app', 'Визиты'),
+	        'debt' => Yii::t('app', 'Долг'),
         ];
     }
 	
@@ -93,10 +97,21 @@ class Client extends \yii\db\ActiveRecord
 	}
 	
 	/**
-	 * @return bool|int|string|null
+	 * @return int
 	 */
-	public function getVisitsCount(): bool|int|string|null
+	public function getVisitCount(): int
 	{
-		return $this->getVisits()->count();
+		return count($this->visits);
+	}
+	
+	/**
+	 * @return int
+	 */
+	public function getDebt(): int
+	{
+		$visitsDebt = ArrayHelper::map($this->visits, 'id', 'debt');
+		$debt = array_sum($visitsDebt);
+		
+		return max($debt, 0);
 	}
 }

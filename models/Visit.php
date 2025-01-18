@@ -10,6 +10,7 @@ use Yii;
 use yii\base\InvalidConfigException;
 use yii\db\ActiveQuery;
 use yii\db\ActiveRecord;
+use yii\helpers\ArrayHelper;
 
 /**
  * This is the model class for table "visit".
@@ -89,6 +90,7 @@ class Visit extends ActiveRecord
 	        'clientMobilePhone' => Yii::t('app', 'Моб. номер'),
 	        'visitProcedures' => Yii::t('app', 'Процедуры'),
 	        'payments' => Yii::t('app', 'Платежи'),
+	        'debt' => Yii::t('app', 'Долг'),
         ];
     }
 	
@@ -161,11 +163,12 @@ class Visit extends ActiveRecord
 	 */
 	public function getDebt(): int
 	{
-		$procedureSum = $this->getVisitProcedures()->sum('sum');
-		$paymentSum = $this->getPayments()->sum('sum');
+		$procedureSum = array_sum(ArrayHelper::map($this->visitProcedures, 'id', 'sum'));
+		$paymentSum = array_sum(ArrayHelper::map($this->payments, 'id', 'sum'));
+		
 		$debt = $procedureSum - $paymentSum;
 		
-		return $debt > 0 ? $debt : 0;
+		return max($debt, 0);
 	}
 
     /**

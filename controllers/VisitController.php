@@ -58,6 +58,7 @@ class VisitController extends BaseController implements ControllerInterface
 	 */
 	public function actionIndex($clientId): string
 	{
+		/** @var VisitSearch $searchModel */
 		$searchModel = Yii::createObject($this->searchModelName);
 		$dataProvider = $searchModel->search($clientId, $this->request->queryParams);
 		$client = $this->findModel(Client::class, $clientId);
