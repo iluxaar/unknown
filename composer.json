@@ -23,7 +23,6 @@
         "yiisoft/yii2-queue": "2.3.7",
         "yiisoft/yii2-redis": "~2.0.0",
         "kartik-v/yii2-widget-select2": "2.2.5",
-        "light/yii2-swagger": "3.0.4",
         "kartik-v/yii2-grid": "3.5.3",
         "kartik-v/yii2-widget-activeform": "1.6.4",
         "ivankff/yii2-modal-ajax": "4.1.0",
