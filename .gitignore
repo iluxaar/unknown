@@ -3,8 +3,8 @@
 .osp
 
 # Env
-./.env
-./env.php
+.env
+env.php
 
 # windows thumbnail cache
 Thumbs.db
