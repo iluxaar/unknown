@@ -100,9 +100,9 @@ class UserForm extends Model
 		$message = Yii::$app->mailer->compose('new-user', [
 			'user' => $user,
 			'password' => $password,
-		])->setFrom([Yii::$app->params['supportEmail'] => Yii::$app->name])
+		])->setFrom([Yii::$app->params['senderEmail'] => Yii::$app->params['senderName']])
 			->setTo($user->email)
-			->setSubject('Регистрация в системе ' . Yii::$app->name);
+			->setSubject(Yii::t('app', 'Регистрация в системе'));
 		
 		return Yii::$app->queue->push(new MailSendJob([
 			'message' => $message,

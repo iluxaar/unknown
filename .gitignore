@@ -2,13 +2,9 @@
 .idea
 .osp
 
-# netbeans project files
-nbproject
-
-# zend studio for eclipse project files
-.buildpath
-.project
-.settings
+# Env
+./.env
+./env.php
 
 # windows thumbnail cache
 Thumbs.db
@@ -24,18 +20,10 @@ composer.phar
 
 # phpunit itself is not needed
 phpunit.phar
-# local phpunit config
 /phpunit.xml
-
 tests/_output/*
 tests/_support/_generated
-
-#vagrant folder
-/.vagrant
 
 #sass cache
 .sass-cache
 /web/.sass-cache
-
-#conf
-config/db-local.php

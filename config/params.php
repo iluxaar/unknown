@@ -3,9 +3,8 @@
 return [
     'adminEmail' => 'admin@unknown.lc',
     'senderEmail' => 'noreply@unknown.lc',
+	'senderName' => 'Unknown mailer',
 	'supportEmail' => 'support@unknown.lc',
-    'senderName' => 'Example.com mailer',
     'bsVersion' => '4.x',
-	'icon-framework' => \kartik\icons\Icon::FAS,
-	'useQueue' => true,
+	'icon-framework' => kartik\icons\Icon::FAS,
 ];

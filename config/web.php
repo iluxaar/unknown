@@ -1,8 +1,5 @@
 <?php
 
-use skeeks\yii2\assetsAuto\AssetsAutoCompressComponent;
-use yii\helpers\ArrayHelper;
-
 $commonConfig = require __DIR__ . '/common.php';
 
 $config = [
@@ -13,23 +10,23 @@ $config = [
 	],
 	'modules' => [
 		'gridview' =>  [
-			'class' => '\kartik\grid\Module',
+			'class' => kartik\grid\Module::class,
 		],
 		'v1' => [
-			'class' => 'app\modules\v1\Module',
+			'class' => app\modules\v1\Module::class,
 		],
 	],
     'components' => [
         'request' => [
-            'cookieValidationKey' => '1CRqRexV0Jxo-DUliEvJIx6G8AEJ0l',
+            'cookieValidationKey' => $_ENV['COOKIE_VALIDATION_KEY'],
         ],
         'user' => [
-            'identityClass' => 'app\models\User',
+            'identityClass' => app\models\User::class,
 	        'loginUrl' => '/security/login',
             'enableAutoLogin' => true,
         ],
 	    'formatter' => [
-		    'class' => 'yii\i18n\Formatter',
+		    'class' => yii\i18n\Formatter::class,
 		    'nullDisplay' => '',
 		    'thousandSeparator' => ' ',
 		    'decimalSeparator' => '.',
@@ -45,7 +42,7 @@ $config = [
 		    'appendTimestamp' => true,
 	    ],
 	    'assetsAutoCompress' => [
-		    'class' => AssetsAutoCompressComponent::class,
+		    'class' => skeeks\yii2\assetsAuto\AssetsAutoCompressComponent::class,
 	    ],
         'urlManager' => [
             'enablePrettyUrl' => true,
@@ -77,15 +74,15 @@ $config = [
 if (YII_ENV_DEV) {
     $config['bootstrap'][] = 'debug';
     $config['modules']['debug'] = [
-        'class' => 'yii\debug\Module',
+        'class' => yii\debug\Module::class,
         'allowedIPs' => ['*'],
     ];
 
     $config['bootstrap'][] = 'gii';
     $config['modules']['gii'] = [
-        'class' => 'yii\gii\Module',
+        'class' => yii\gii\Module::class,
         'allowedIPs' => ['*'],
     ];
 }
 
-return ArrayHelper::merge($commonConfig, $config);
+return yii\helpers\ArrayHelper::merge($commonConfig, $config);
