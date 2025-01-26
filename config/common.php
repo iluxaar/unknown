@@ -11,6 +11,12 @@ $config = [
 	'bootstrap' => [
 		'log',
 		'queue',
+		'history',
+	],
+	'modules' => [
+		'history' =>  [
+			'class' => \iluxaar\history\Module::class,
+		],
 	],
 	'aliases' => [
 		'@bower' => '@vendor/bower-asset',
@@ -22,7 +28,7 @@ $config = [
 			'dsn' => "mysql:host={$_ENV['DB_HOST']};dbname={$_ENV['DB_NAME']}",
 			'username' => $_ENV['DB_USERNAME'],
 			'password' => $_ENV['DB_PASSWORD'],
-			'enableSchemaCache' => YII_ENV_PROD,
+			'enableSchemaCache' => true,
 			'schemaCache' => 'cache',
 			'charset' => 'utf8',
 		],
@@ -37,8 +43,17 @@ $config = [
 		'log' => [
 			'targets' => [
 				[
-					'class' => yii\log\FileTarget::class,
+					'class' => yii\log\DbTarget::class,
 					'levels' => ['error', 'warning'],
+				],
+				[
+					'class' => yii\log\EmailTarget::class,
+					'levels' => ['error'],
+					'message' => [
+						'from' => ['logger@unknown.lc'],
+						'to' => ['admin@unknown.lc'],
+						'subject' => 'Error at unknown.lc',
+					],
 				],
 			],
 		],

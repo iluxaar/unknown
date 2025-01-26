@@ -29,6 +29,7 @@ class VisitFindService
 	public function get($start, $end): array
 	{
 		$models = $this->getBaseQuery()
+			->with('client')
 			->where(['>=', 'visit_datetime', $start])
 			->andWhere(['<=', 'visit_datetime', $end])
 			->all();
