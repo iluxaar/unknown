@@ -11,12 +11,6 @@ $config = [
 	'bootstrap' => [
 		'log',
 		'queue',
-		'history',
-	],
-	'modules' => [
-		'history' =>  [
-			'class' => \iluxaar\history\Module::class,
-		],
 	],
 	'aliases' => [
 		'@bower' => '@vendor/bower-asset',
