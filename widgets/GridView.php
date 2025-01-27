@@ -10,6 +10,8 @@ use Throwable;
  */
 class GridView extends \yii\grid\GridView
 {
+	private const DEFAULT_PAGE_SIZE = 10;
+	
 	/**
 	 * @var string[]
 	 */
@@ -32,14 +34,28 @@ class GridView extends \yii\grid\GridView
 	/**
 	 * @var bool
 	 */
-	public $pjax = true;
+	public bool $pjax = true;
 	
 	/**
 	 * @var array
 	 */
-	public $pjaxSettings = [
+	public array $pjaxSettings = [
 		'loadingCssClass' => false,
 	];
+	
+	/**
+	 * @return void
+	 * @throws \yii\base\InvalidConfigException
+	 */
+	public function init(): void
+	{
+		parent::init();
+		
+		if ($pagination = $this->dataProvider->getPagination()) {
+			$pagination->setPageSize(self::DEFAULT_PAGE_SIZE);
+		}
+		
+	}
 	
 	/**
 	 * @return void
