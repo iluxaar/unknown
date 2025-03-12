@@ -12,6 +12,9 @@ $config = [
 		'fixture' => [
 			'class' => yii\faker\FixtureController::class,
 		],
+        'heroku' => [
+            'class' => 'purrweb\heroku\HerokuGeneratorController',
+        ],
 	],
 ];
 
