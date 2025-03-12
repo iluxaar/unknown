@@ -33,11 +33,18 @@ class VisitController extends Controller
 		tags: ['visit'],
 		parameters: [
 			new OA\Parameter(
-				name: 'id',
-				description: 'id',
+				name: 'start',
+				description: 'Дата от',
 				in: 'query',
 				required: false,
-				schema: new OA\Schema(type: 'integer')
+				schema: new OA\Schema(type: 'string')
+			),
+			new OA\Parameter(
+				name: 'end',
+				description: 'Дата до',
+				in: 'query',
+				required: false,
+				schema: new OA\Schema(type: 'string')
 			),
 		],
 	)]
